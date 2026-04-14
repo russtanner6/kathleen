@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Love Sophia Joy | Kathleen Newrones</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #D4A017;
+    --gold-bright: #FFD700;
+    --gold-warm: #F5C542;
+    --gold-pale: #F5E6C8;
+    --rose-gold: #B76E79;
+    --rose-gold-soft: rgba(183,110,121,0.3);
+    --magenta: #C2185B;
+    --aqua: #4DB6AC;
+    --aqua-bright: #80DEEA;
+    --ocean: #006064;
+    --emerald: #2E7D32;
+    --peridot: #6B8E23;
+
+    --bg-dark: #0a0a0a;
+    --bg-deep: #111111;
+    --bg-card: #1a1a1a;
+    --bg-warm: #FFFDF5;
+    --text-light: rgba(245,242,236,0.95);
+    --text-muted: rgba(240,236,228,0.72);
+    --text-gold: var(--gold);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--gold); color: var(--bg-dark); }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1003;
+    padding: 1.5rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    transition: all 0.5s ease;
+    pointer-events: none;
+  }
+
+  /* Dark header bar fades in on scroll */
+  nav::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(16px);
+    opacity: 0; transition: opacity 0.5s ease;
+    z-index: -1;
+  }
+
+  nav.scrolled::before { opacity: 1; }
+  nav.scrolled { padding: 1rem 3rem; }
+
+  /* Gradient mask below nav so content fades out before reaching it */
+  nav::after {
+    content: ''; position: absolute;
+    top: 100%; left: 0; right: 0;
+    height: 60px;
+    background: linear-gradient(180deg, rgba(10,10,10,0.85) 0%, transparent 100%);
+    opacity: 0; transition: opacity 0.5s ease;
+    pointer-events: none;
+  }
+
+  nav.scrolled::after { opacity: 1; }
+
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    nav.scrolled { padding: 0.9rem 1.5rem; }
+  }
+
+  .nav-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 500;
+    letter-spacing: 0.25em; text-transform: uppercase;
+    color: #fff; text-decoration: none;
+    mix-blend-mode: difference;
+    pointer-events: auto;
+  }
+
+  .menu-toggle {
+    cursor: pointer; z-index: 1004;
+    width: 32px; height: 20px;
+    position: fixed;
+    top: 1.8rem; right: 1.8rem;
+    display: flex;
+    flex-direction: column; justify-content: space-between;
+    pointer-events: auto;
+  }
+
+  .menu-toggle span {
+    display: block; width: 100%; height: 1.5px;
+    background: #fff; transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+    transform-origin: center;
+  }
+
+  /* When menu is open, show X in dark green to contrast light panel */
+  .menu-toggle.active span { background: #1B5E20; }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: translateY(9.25px) rotate(45deg);
+  }
+  .menu-toggle.active span:nth-child(2) { opacity: 0; }
+  .menu-toggle.active span:nth-child(3) {
+    transform: translateY(-9.25px) rotate(-45deg);
+  }
+
+  /* Slide-out panel from right */
+  .nav-overlay {
+    position: fixed; top: 0; right: 0; bottom: 0;
+    z-index: 1001;
+    width: 360px; max-width: 85vw;
+    background: linear-gradient(180deg, #FFF8EE 0%, #F5E6D0 40%, #E8DCC8 100%);
+    box-shadow: -8px 0 40px rgba(0,0,0,0.3);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+  }
+
+  .nav-overlay.open { transform: translateX(0); }
+
+  /* Backdrop dim */
+  .nav-backdrop {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 1000;
+    background: rgba(0,0,0,0.4);
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+
+  .nav-backdrop.open { opacity: 1; visibility: visible; }
+
+  .nav-overlay ul {
+    list-style: none; text-align: center;
+    display: flex; flex-direction: column; gap: 0;
+  }
+
+  .nav-overlay li { overflow: hidden; }
+
+  .nav-overlay a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 400; letter-spacing: 0.06em;
+    color: #1B5E20; text-decoration: none;
+    display: inline-block;
+    padding: 0.6rem 0;
+    transition: color 0.3s, transform 0.4s, opacity 0.4s;
+    transform: translateX(40px);
+    opacity: 0;
+  }
+
+  .nav-overlay.open a {
+    transform: translateX(0); opacity: 1;
+  }
+
+  .nav-overlay li:nth-child(1) a { transition-delay: 0.1s; }
+  .nav-overlay li:nth-child(2) a { transition-delay: 0.15s; }
+  .nav-overlay li:nth-child(3) a { transition-delay: 0.2s; }
+  .nav-overlay li:nth-child(4) a { transition-delay: 0.25s; }
+  .nav-overlay li:nth-child(5) a { transition-delay: 0.3s; }
+
+  .nav-overlay a:hover { color: #D4A017; }
+
+  .nav-overlay .nav-footer {
+    margin-top: 3rem;
+    display: flex; gap: 1.8rem;
+    opacity: 0; transform: translateX(30px);
+    transition: all 0.5s ease 0.35s;
+  }
+
+  .nav-overlay.open .nav-footer { opacity: 1; transform: translateX(0); }
+
+  .nav-overlay .nav-footer a {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: #4E7C5B; padding: 0;
+    transform: none; opacity: 1;
+  }
+
+  .nav-overlay .nav-footer a:hover { color: #D4A017; }
+
+  /* ===== HERO ===== */
+  .hero {
+    height: 100vh; position: relative;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('https://russtanner.xyz/ocean.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .hero-bg::after {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      linear-gradient(180deg,
+        rgba(6,4,10,0.75) 0%,
+        rgba(10,4,20,0.55) 30%,
+        rgba(10,4,20,0.35) 50%,
+        rgba(10,4,20,0.5) 70%,
+        rgba(10,10,10,0.85) 100%
+      ),
+      radial-gradient(ellipse 80% 50% at 50% 45%, rgba(255,215,0,0.08) 0%, transparent 60%);
+  }
+
+  .hero-grain {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center; padding: 2rem;
+    margin-top: -6vh;
+    will-change: transform;
+  }
+
+  .hero-logo {
+    width: 200px; height: auto; margin: 0 auto 1.5rem;
+    opacity: 0; animation: fadeUp 1.5s ease 0.3s forwards;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 7vw, 5.5rem);
+    font-weight: 300; letter-spacing: 0.12em;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #FFD700;
+    text-shadow: 0 0 80px rgba(255,215,0,0.25), 0 2px 6px rgba(0,0,0,0.3);
+    opacity: 0; animation: fadeUp 1.5s ease 0.5s forwards;
+  }
+
+  .hero-line {
+    width: 60px; height: 1px;
+    background: var(--gold);
+    margin: 1.5rem auto;
+    opacity: 0; animation: fadeUp 1.5s ease 0.7s forwards;
+  }
+
+  .hero-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem; font-weight: 400;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    opacity: 0; animation: fadeUp 1.5s ease 0.9s forwards;
+  }
+
+  .hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.9);
+    max-width: 90vw; margin: 1rem auto 0;
+    line-height: 1.8;
+    white-space: nowrap;
+    opacity: 0; animation: fadeUp 1.5s ease 0.9s forwards;
+  }
+
+  @media (max-width: 600px) {
+    .hero-subtitle { white-space: normal; max-width: 90vw; }
+  }
+
+  .scroll-indicator {
+    position: absolute; bottom: 3rem;
+    left: 0; right: 0;
+    display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+    opacity: 0; animation: fadeUp 1.5s ease 1.5s forwards;
+    transition: opacity 0.4s ease;
+  }
+
+  .scroll-indicator.hidden { opacity: 0 !important; pointer-events: none; }
+
+  .scroll-indicator span {
+    font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .scroll-line {
+    width: 1px; height: 40px; background: var(--gold);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.5); transform-origin: top; }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== SECTION SHARED ===== */
+  .section-dark { background: var(--bg-dark); padding: 8rem 3rem; }
+  .section-deep { background: var(--bg-deep); padding: 8rem 3rem; }
+  .section-warm { background: var(--bg-warm); color: var(--bg-dark); padding: 8rem 3rem; }
+
+  .section-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 6rem; font-weight: 300;
+    color: rgba(212,160,23,0.08);
+    line-height: 1; margin-bottom: -1rem;
+  }
+
+  .section-label {
+    font-size: 0.85rem; font-weight: 600;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .section-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 300; line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-body {
+    font-size: 0.9rem; font-weight: 300;
+    line-height: 1.9; color: var(--text-muted);
+    max-width: 600px;
+  }
+
+  .section-warm .section-label { color: var(--emerald); }
+  .section-warm .section-heading { color: var(--gold); }
+  .section-warm .section-body { color: rgba(10,10,10,0.6); }
+  .section-warm .section-number { color: rgba(212,160,23,0.06); }
+
+  .inner { max-width: 1200px; margin: 0 auto; }
+
+  /* ===== ABOUT ===== */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 6rem; align-items: center;
+  }
+
+  .about-image {
+    aspect-ratio: 3/4; border-radius: 4px;
+    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; color: var(--text-muted);
+    font-style: italic; text-align: center; padding: 2rem;
+    position: relative; overflow: hidden;
+    min-height: 300px;
+  }
+
+  .about-image::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  @media (max-width: 768px) {
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  }
+
+  /* ===== HORIZONTAL SCROLL OFFERINGS ===== */
+  .offerings-scroll {
+    padding: 8rem 0 8rem 3rem;
+    background: var(--bg-deep);
+    overflow: hidden;
+  }
+
+  .offerings-header {
+    max-width: 1200px; margin: 0 auto 3rem;
+    padding-right: 3rem;
+  }
+
+  .scroll-track {
+    display: flex; gap: 2rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2rem;
+    padding-right: 3rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) transparent;
+  }
+
+  .scroll-track::-webkit-scrollbar { height: 2px; }
+  .scroll-track::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); }
+  .scroll-track::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+  .offering-card {
+    flex: 0 0 340px; scroll-snap-align: start;
+    background: var(--bg-card);
+    border: 1px solid rgba(212,160,23,0.08);
+    border-radius: 4px;
+    padding: 2.5rem 2rem;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .offering-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    opacity: 0; transition: opacity 0.4s;
+  }
+
+  .offering-card:hover { border-color: rgba(212,160,23,0.2); transform: translateY(-4px); }
+  .offering-card:hover::before { opacity: 1; }
+
+  .card-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 300;
+    color: rgba(212,160,23,0.12);
+    line-height: 1; margin-bottom: 1rem;
+  }
+
+  .card-icon { margin-bottom: 1rem; display: block; height: 32px; }
+  .card-icon svg { width: 32px; height: 32px; }
+
+  .card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem; font-weight: 400;
+    color: rgba(240,236,228,0.92);
+    margin-bottom: 0.8rem; line-height: 1.3;
+  }
+
+  .card-desc {
+    font-size: 0.8rem; font-weight: 300;
+    line-height: 1.8; color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  .card-cta {
+    font-size: 0.65rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); text-decoration: none;
+    border-bottom: 1px solid rgba(212,160,23,0.3);
+    padding-bottom: 3px; transition: all 0.3s;
+  }
+
+  .card-cta:hover { border-color: var(--gold); }
+
+  /* ===== WHOLENESS SECTION ===== */
+  .wholeness {
+    background: var(--bg-dark);
+    padding: 8rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .wholeness::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 50%, rgba(212,160,23,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .wholeness-inner {
+    max-width: 700px; margin: 0 auto;
+    text-align: center; position: relative; z-index: 1;
+  }
+
+  .wholeness-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+    font-weight: 300; font-style: italic;
+    color: var(--gold-warm);
+    line-height: 1.8;
+    margin: 2rem 0;
+    padding: 0 1rem;
+  }
+
+  .btn-gold {
+    display: inline-block; margin-top: 2rem;
+    padding: 1rem 2.5rem;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    text-decoration: none; transition: all 0.4s ease;
+    background: transparent;
+  }
+
+  .btn-gold:hover {
+    background: var(--gold);
+    color: var(--bg-dark);
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonial-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) { .testimonial-grid { grid-template-columns: 1fr; } }
+
+  .testimonial-card {
+    padding: 2.5rem;
+    border-left: 1px solid rgba(212,160,23,0.2);
+    transition: border-color 0.3s;
+  }
+
+  .testimonial-card:hover { border-color: var(--gold); }
+
+  .testimonial-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem; font-weight: 300;
+    font-style: italic; line-height: 1.8;
+    color: rgba(245,242,236,0.9); margin-bottom: 1.2rem;
+  }
+
+  .testimonial-author {
+    font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ===== CREATIONS ===== */
+  .creation-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) { .creation-row { grid-template-columns: 1fr; } }
+
+  .creation-item {
+    border: 1px solid rgba(212,160,23,0.08);
+    border-radius: 4px; overflow: hidden;
+    transition: all 0.4s;
+  }
+
+  .creation-item:hover { border-color: rgba(212,160,23,0.2); transform: translateY(-3px); }
+
+  .creation-visual {
+    aspect-ratio: 1; display: flex;
+    align-items: center; justify-content: center;
+    font-size: 3rem;
+  }
+
+  .creation-visual.v1 { background: linear-gradient(135deg, #1a1510, #2a2015); }
+  .creation-visual.v2 { background: linear-gradient(135deg, #0a1518, #152025); }
+  .creation-visual.v3 { background: linear-gradient(135deg, #1a1015, #251520); }
+
+  .creation-info { padding: 1.5rem; }
+
+  .creation-info h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 400;
+    margin-bottom: 0.4rem;
+  }
+
+  .creation-info p { font-size: 0.8rem; font-weight: 300; color: var(--text-muted); line-height: 1.6; }
+
+  /* ===== EARTH BAND ===== */
+  .earth-strip {
+    display: flex; justify-content: center; gap: 4rem;
+    padding: 3rem; flex-wrap: wrap;
+    background: var(--bg-card);
+    border-top: 1px solid rgba(212,160,23,0.06);
+    border-bottom: 1px solid rgba(212,160,23,0.06);
+  }
+
+  .earth-el { text-align: center; }
+  .earth-el-icon { font-size: 2rem; display: block; margin-bottom: 0.4rem; }
+  .earth-el-label {
+    font-size: 0.6rem; font-weight: 500;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  /* ===== CONTACT ===== */
+  .contact-section {
+    background: var(--bg-dark);
+    padding: 8rem 3rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .contact-section::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse 60% 40% at 50% 80%, rgba(212,160,23,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-inner { position: relative; z-index: 1; max-width: 500px; margin: 0 auto; }
+
+  .contact-email {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: var(--text-muted);
+    margin-bottom: 2rem;
+  }
+
+  .contact-email a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(212,160,23,0.3); }
+
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+  .contact-form input, .contact-form textarea {
+    font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 300;
+    padding: 1rem; background: transparent;
+    border: 1px solid rgba(240,236,228,0.1);
+    color: var(--text-light); outline: none;
+    transition: border-color 0.3s;
+    border-radius: 0;
+  }
+
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--gold); }
+  .contact-form textarea { min-height: 120px; resize: vertical; }
+
+  .contact-form button {
+    padding: 1rem; background: transparent;
+    border: 1px solid var(--gold); color: var(--gold);
+    font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 500;
+    letter-spacing: 0.2em; text-transform: uppercase;
+    cursor: pointer; transition: all 0.4s;
+  }
+
+  .contact-form button:hover { background: var(--gold); color: var(--bg-dark); }
+
+  .social-links {
+    display: flex; justify-content: center; gap: 1.5rem; margin-top: 2.5rem;
+  }
+
+  .social-links a {
+    font-size: 0.65rem; font-weight: 500;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--text-muted); text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .social-links a:hover { color: var(--gold); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    padding: 2rem 3rem;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+
+  .footer-brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem; font-weight: 400;
+    color: var(--text-muted); letter-spacing: 0.1em;
+  }
+
+  .footer-copy { font-size: 0.65rem; color: rgba(240,236,228,0.2); }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal {
+    opacity: 0; transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: transform, opacity;
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-brand" style="visibility:hidden;">.</a>
+  <div class="menu-toggle" id="menuToggle">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- SLIDE MENU BACKDROP -->
+<div class="nav-backdrop" id="navBackdrop"></div>
+
+<!-- SLIDE MENU -->
+<div class="nav-overlay" id="navOverlay">
+  <ul>
+    <li><a href="#about" class="nav-link">About</a></li>
+    <li><a href="#offerings" class="nav-link">Offerings</a></li>
+    <li><a href="#wholeness" class="nav-link">Sessions</a></li>
+    <li><a href="#voices" class="nav-link">Voices</a></li>
+    <li><a href="#connect" class="nav-link">Connect</a></li>
+  </ul>
+  <div class="nav-footer">
+    <a href="#">YouTube</a>
+    <a href="#">Instagram</a>
+    <a href="#">Facebook</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content" data-parallax="0.4">
+    <img class="hero-logo" src="https://russtanner.xyz/logo.png" alt="Love Sophia Joy">
+    <h1 class="hero-title">Love Sophia Joy</h1>
+    <p class="hero-subtitle">LET TRUE LIGHT LEAD THE WAY TO MIRACLES EVERY DAY</p>
+  </div>
+  <div class="scroll-indicator">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section-dark" id="about">
+  <div class="inner">
+    <div class="about-grid">
+      <div>
+        <div class="about-image reveal" style="padding:0;">
+          <img src="https://russtanner.xyz/kathleen.jpeg" alt="Kathleen Newrones" style="width:100%; height:100%; object-fit:cover; border-radius:4px; display:block;">
+        </div>
+      </div>
+      <div>
+        <div class="section-number reveal" data-parallax="0.15">01</div>
+        <p class="section-label reveal reveal-delay-1">About</p>
+        <h2 class="section-heading reveal reveal-delay-2">I am Kathleen Newrones</h2>
+        <div class="section-body reveal reveal-delay-3">
+          <p style="margin-bottom:1.2rem;">Kathleen is a Wholistic Wellness Healing Artist &amp; Uplifter, weaving a golden tapestry of various art, wellness and healing modalities, including painting, photography, poetry, writing and sounds.</p>
+          <p style="margin-bottom:1.2rem;">One of her specialties is expressing in her art the ancient healing language of the Soul, Source and the Cosmos through her Light Language. This evokes a celestial loving joy of remembrance of the truth of who we really are, a beautiful and magnificent sacred star.</p>
+          <p style="margin-bottom:1.2rem;">She is an Ambassador for Mother Earth with a profound connection to the Ocean, the Sun and Spirit of Laguna Beach, for which she makes her home and draws her nourishment, replenishment, inspiration and joy.</p>
+          <p>She experiences Mother Earth Laguna, and of nature and life itself, as a symphonic thanksgiving and infinite blessing of divine grace, appreciating the love in and of everyone and everything.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERINGS HORIZONTAL SCROLL -->
+<section class="offerings-scroll" id="offerings">
+  <div class="offerings-header">
+    <div class="section-number reveal" data-parallax="0.15">02</div>
+    <p class="section-label reveal reveal-delay-1">Specializations</p>
+    <h2 class="section-heading reveal reveal-delay-2">Sacred Offerings</h2>
+    <p class="section-body reveal reveal-delay-3">Scroll to explore the modalities I weave together for your healing journey.</p>
+  </div>
+  <div class="scroll-track">
+    <div class="offering-card">
+      <div class="card-number">01</div>
+      <span class="card-icon"><svg viewBox="0 0 32 32" fill="none" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"><path d="M8 16c0-4.4 3.6-8 8-8s8 3.6 8 8"/><path d="M11 16c0-2.8 2.2-5 5-5s5 2.2 5 5"/><circle cx="16" cy="16" r="2"/><path d="M16 18v8"/><path d="M12 26h8"/></svg></span>
+      <h3 class="card-title">Sound Healing Journeys</h3>
+      <p class="card-desc">Vibrational medicine through alchemy crystal bowls, consecrated instruments, and ancient chants drawn from multiple traditions. Elementals and spirit allies often join the work.</p>
+      <a href="#connect" class="card-cta">Book Session</a>
+    </div>
+    <div class="offering-card">
+      <div class="card-number">02</div>
+      <span class="card-icon"><svg viewBox="0 0 32 32" fill="none" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3c0 6-7 9-7 16a7 7 0 0014 0c0-3-2-5-3-7 0 3-2 5-4 5s-3-2-3-5c0-2 3-5 3-9z"/></svg></span>
+      <h3 class="card-title">Shamanic Healing</h3>
+      <p class="card-desc">One of the oldest forms of healing on Earth. I journey using rattles and drums to connect with spirit guides, helping you reclaim power, rediscover gifts, and heal ancestral trauma.</p>
+      <a href="#connect" class="card-cta">Book Session</a>
+    </div>
+    <div class="offering-card">
+      <div class="card-number">03</div>
+      <span class="card-icon"><svg viewBox="0 0 32 32" fill="none" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"><circle cx="16" cy="6" r="3"/><path d="M16 9v6"/><path d="M10 28l3-10h6l3 10"/><circle cx="16" cy="18" r="2" stroke-dasharray="2 2"/><path d="M8 6h2M22 6h2M4 16h3M25 16h3" opacity="0.4"/></svg></span>
+      <h3 class="card-title">Human Design</h3>
+      <p class="card-desc">A map of who you are at your core, weaving I-Ching, chakras, the Tree of Life, and astrology. My readings include practical tools, rituals, and exercises to help you live your design.</p>
+      <a href="#connect" class="card-cta">Book Reading</a>
+    </div>
+    <div class="offering-card">
+      <div class="card-number">04</div>
+      <span class="card-icon"><svg viewBox="0 0 32 32" fill="none" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"><circle cx="16" cy="14" r="9"/><path d="M10 25h12"/><path d="M12 28h8"/><path d="M16 8v2M12 10l1 1M20 10l-1 1" opacity="0.5"/><circle cx="16" cy="14" r="3" stroke-dasharray="2 1.5"/></svg></span>
+      <h3 class="card-title">Divination</h3>
+      <p class="card-desc">Archetypal castings, Akashic records, and Tarot to identify the forces shaping your life since birth. Understand their dynamics, gifts, and shadows.</p>
+      <a href="#connect" class="card-cta">Book Session</a>
+    </div>
+    <div class="offering-card">
+      <div class="card-number">05</div>
+      <span class="card-icon"><svg viewBox="0 0 32 32" fill="none" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 28V15"/><path d="M16 20c-4-1-7-5-7-9 4 0 7 3 7 7"/><path d="M16 15c4-1 7-5 7-9-4 0-7 3-7 7"/></svg></span>
+      <h3 class="card-title">Coaching &amp; Mentoring</h3>
+      <p class="card-desc">You are already whole, wise, and deeply knowledgeable about your path. I hold sacred space for truth-telling, power reclamation, and guided self-discovery.</p>
+      <a href="#connect" class="card-cta">Book Session</a>
+    </div>
+    <div class="offering-card">
+      <div class="card-number">06</div>
+      <span class="card-icon"><svg viewBox="0 0 32 32" fill="none" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18c0-2 2-4 5-4 2 0 3 1 5 1s3-1 5-1c3 0 5 2 5 4v2c0 3-4 7-10 9C10 27 6 23 6 20v-2z"/><path d="M16 8v3M12 9l1 2M20 9l-1 2" opacity="0.5"/><circle cx="16" cy="5" r="1.5" fill="#D4A017" opacity="0.3"/></svg></span>
+      <h3 class="card-title">Reiki Healing &amp; Teaching</h3>
+      <p class="card-desc">Universal life force energy to reduce stress, quiet the mind, and restore balance. Hands-on or distance healing, plus Reiki I and II attunement training.</p>
+      <a href="#connect" class="card-cta">Book Session</a>
+    </div>
+    <div class="offering-card">
+      <div class="card-number">07</div>
+      <span class="card-icon"><svg viewBox="0 0 32 32" fill="none" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"><circle cx="16" cy="8" r="3"/><circle cx="7" cy="22" r="3"/><circle cx="25" cy="22" r="3"/><path d="M14 10.5L9 19.5"/><path d="M18 10.5l5 9"/><path d="M10 22h12" stroke-dasharray="2 2"/></svg></span>
+      <h3 class="card-title">Family Constellations</h3>
+      <p class="card-desc">Reveal hidden dynamics in your family system. Heal systemic disharmony within your lineage so love, belonging, and peace can be restored.</p>
+      <a href="#connect" class="card-cta">Book Session</a>
+    </div>
+    <div class="offering-card">
+      <div class="card-number">08</div>
+      <span class="card-icon"><svg viewBox="0 0 32 32" fill="none" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"><ellipse cx="16" cy="16" rx="12" ry="5" transform="rotate(0 16 16)"/><ellipse cx="16" cy="16" rx="12" ry="5" transform="rotate(60 16 16)"/><ellipse cx="16" cy="16" rx="12" ry="5" transform="rotate(120 16 16)"/><circle cx="16" cy="16" r="2" fill="#D4A017" opacity="0.4"/></svg></span>
+      <h3 class="card-title">Quantum Field Healing</h3>
+      <p class="card-desc">Connect with your multidimensional self. Clear energetic blocks, repair timelines, heal karmic trauma, and restore your field using Light Language and healing frequencies.</p>
+      <a href="#connect" class="card-cta">Book Session</a>
+    </div>
+    <div class="offering-card">
+      <div class="card-number">09</div>
+      <span class="card-icon"><svg viewBox="0 0 32 32" fill="none" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 26c-3-2-6-5-6-9 0-3 2-5 4-6 1.3-.6 2-.5 2 1"/><path d="M16 26c3-2 6-5 6-9 0-3-2-5-4-6-1.3-.6-2-.5-2 1"/><path d="M16 12c-1-4-4-7-7-8 0 4 2 7 5 9"/><path d="M16 12c1-4 4-7 7-8 0 4-2 7-5 9"/><path d="M8 27h16" opacity="0.3"/></svg></span>
+      <h3 class="card-title">Meditation &amp; Mindfulness</h3>
+      <p class="card-desc">Practical spirituality for everyday life. Guided and silent practices, sound healing integration, and personalized tools for finding calm and clarity.</p>
+      <a href="#connect" class="card-cta">Book Session</a>
+    </div>
+    <div class="offering-card">
+      <div class="card-number">10</div>
+      <span class="card-icon"><svg viewBox="0 0 32 32" fill="none" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4c-3 5-8 9-8 15a8 8 0 0016 0c0-6-5-10-8-15z"/><path d="M13 20c0 2 1.5 3 3 3s3-1 3-3" opacity="0.4"/></svg></span>
+      <h3 class="card-title">Essential Oil Blends</h3>
+      <p class="card-desc">Custom botanical blends crafted with intention to support your healing, grounding, ceremony, and energetic alignment.</p>
+      <a href="#connect" class="card-cta">Inquire</a>
+    </div>
+    <div class="offering-card">
+      <div class="card-number">11</div>
+      <span class="card-icon"><svg viewBox="0 0 32 32" fill="none" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round"><circle cx="16" cy="16" r="10" stroke-dasharray="3 2"/><circle cx="16" cy="9" r="2"/><circle cx="10" cy="20" r="2"/><circle cx="22" cy="20" r="2"/><path d="M16 11v3M11.5 19l3-2M20.5 19l-3-2" opacity="0.4"/></svg></span>
+      <h3 class="card-title">Events &amp; Retreats</h3>
+      <p class="card-desc">Group sound healing, meditation workshops, cacao ceremonies, and fully customized retreat experiences for your community.</p>
+      <a href="#connect" class="card-cta">Inquire</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHOLENESS -->
+<section class="wholeness" id="wholeness">
+  <div class="wholeness-inner">
+    <div class="section-number reveal" data-parallax="0.15">03</div>
+    <p class="section-label reveal reveal-delay-1">Sessions</p>
+    <h2 class="section-heading reveal reveal-delay-2">Weave Your Wholeness</h2>
+    <div class="section-body reveal reveal-delay-3" style="max-width: 100%; text-align: center;">
+      <p style="margin-bottom:1.2rem;">Being human is a gift. Consciousness with immeasurable power, integrated with a physical body carrying the stories of your lineage. In your essence, you are already whole.</p>
+    </div>
+    <div class="wholeness-quote reveal">
+      The center of this universe lives in your own heart,<br>
+      divided by dark caves, flooded by roaring rivers,<br>
+      yet always returning to its golden source.
+    </div>
+    <div class="section-body reveal" style="max-width: 100%; text-align: center;">
+      <p>In a Wholeness session, I bring together an alchemy of practices to partner with you wherever you are on your path. No shortcuts. No bypasses. Just the authentic work of coming home to yourself.</p>
+    </div>
+    <a href="#connect" class="btn-gold reveal">Book a Discovery Call</a>
+  </div>
+</section>
+
+<!-- EARTH STRIP -->
+<div class="earth-strip">
+  <div class="earth-el"><span class="earth-el-icon">&#x2600;&#xFE0F;</span><span class="earth-el-label">Citrine Sun</span></div>
+  <div class="earth-el"><span class="earth-el-icon">&#x1F30A;</span><span class="earth-el-label">Sapphire Ocean</span></div>
+  <div class="earth-el"><span class="earth-el-icon">&#x1F3D6;&#xFE0F;</span><span class="earth-el-label">Gold Sand</span></div>
+  <div class="earth-el"><span class="earth-el-icon">&#x1F331;</span><span class="earth-el-label">Lush Life</span></div>
+  <div class="earth-el"><span class="earth-el-icon">&#x1F42C;</span><span class="earth-el-label">Free Spirit</span></div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="section-dark" id="voices" style="padding-top: 8rem;">
+  <div class="inner">
+    <div class="section-number reveal" data-parallax="0.15">04</div>
+    <p class="section-label reveal reveal-delay-1">Voices</p>
+    <h2 class="section-heading reveal reveal-delay-2" style="margin-bottom: 3rem;">From Those Who've Walked This Path</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal">
+        <p class="testimonial-text">Working with Kathleen has been one of the most meaningful experiences of my life. She has a true gift. The connection she creates is powerful, and I feel healing in every session.</p>
+        <p class="testimonial-author">Client</p>
+      </div>
+      <div class="testimonial-card reveal">
+        <p class="testimonial-text">This has been the best healing approach I've done. Kathleen invests in knowing her clients and tailors every session to their strengths and needs. Her ability to adapt in the moment is tremendous.</p>
+        <p class="testimonial-author">Client</p>
+      </div>
+      <div class="testimonial-card reveal">
+        <p class="testimonial-text">My Human Design reading was a liberating experience. I learned to recognize what flows naturally with my design and to release what creates friction. Incredibly thorough.</p>
+        <p class="testimonial-author">Client</p>
+      </div>
+      <div class="testimonial-card reveal">
+        <p class="testimonial-text">Kathleen is a gifted healer who brings love, passion, and genuine care to every session. Being in her presence touches my heart. A true friend, teacher, and healer.</p>
+        <p class="testimonial-author">Client</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREATIONS -->
+<section class="section-deep">
+  <div class="inner">
+    <div class="section-number reveal" data-parallax="0.15">05</div>
+    <p class="section-label reveal reveal-delay-1">Creations</p>
+    <h2 class="section-heading reveal reveal-delay-2" style="margin-bottom: 3rem;">Music, Writing &amp; Sacred Works</h2>
+    <div class="creation-row">
+      <div class="creation-item reveal">
+        <div class="creation-visual v1"><svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M24 48V20l20-6v28"/><circle cx="20" cy="48" r="4"/><circle cx="40" cy="42" r="4"/><path d="M24 30l20-6" opacity="0.4"/><path d="M14 18c2-3 5-4 8-4" opacity="0.3"/><path d="M50 12c-2-3-5-4-8-4" opacity="0.3"/></svg></div>
+        <div class="creation-info">
+          <h3>Sacred Music</h3>
+          <p>Original albums of healing songs, mantras, and vocal journeys. Music as medicine.</p>
+        </div>
+      </div>
+      <div class="creation-item reveal reveal-delay-1">
+        <div class="creation-visual v2"><svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M40 8c4 4 4 10 0 14L22 40l-8 2 2-8L34 16"/><path d="M34 16l6-2c2-1 4 0 6 2"/><path d="M22 40l-4 4"/><path d="M14 52h28" opacity="0.3"/><path d="M16 16c0-4 3-7 7-8" opacity="0.25"/></svg></div>
+        <div class="creation-info">
+          <h3>Visionary Writing</h3>
+          <p>Poetry and prose filled with truth, longing, and the courage to begin again.</p>
+        </div>
+      </div>
+      <div class="creation-item reveal reveal-delay-2">
+        <div class="creation-visual v3"><svg width="64" height="64" viewBox="0 0 64 64" fill="none" stroke="#D4A017" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="24" y="24" width="16" height="26" rx="3"/><path d="M28 24v-6a4 4 0 018 0v6"/><path d="M30 14h4v-2a2 2 0 00-4 0v2z" fill="#D4A017" opacity="0.2"/><path d="M28 36h8" opacity="0.3"/><path d="M28 40h8" opacity="0.3"/><circle cx="32" cy="32" r="1" fill="#D4A017" opacity="0.4"/><path d="M20 54c3-2 5-2 8 0s5 2 8 0 5-2 8 0" opacity="0.25"/><path d="M44 34c3 1 5 3 5 6" opacity="0.2"/><path d="M20 34c-3 1-5 3-5 6" opacity="0.2"/></svg></div>
+        <div class="creation-info">
+          <h3>Essential Oil Blends</h3>
+          <p>Botanical alchemy crafted with intention for healing, ceremony, and daily practice.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="connect">
+  <div class="contact-inner">
+    <div class="section-number reveal" data-parallax="0.15">06</div>
+    <p class="section-label reveal reveal-delay-1">Connect</p>
+    <h2 class="section-heading reveal reveal-delay-2">Your Heart Is Calling</h2>
+    <p class="contact-email reveal reveal-delay-3">Email: <a href="mailto:info@lovesophiajoy.com">info@lovesophiajoy.com</a></p>
+    <div class="contact-form reveal">
+      <input type="text" placeholder="Name">
+      <input type="email" placeholder="Email">
+      <input type="text" placeholder="What are you called to explore?">
+      <textarea placeholder="Message"></textarea>
+      <button type="button">Send With Love</button>
+    </div>
+    <div class="social-links reveal">
+      <a href="#">YouTube</a>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Love Sophia Joy</div>
+  <div class="footer-copy">&copy; 2026 Love Sophia Joy &bull; Kathleen Newrones. All rights reserved.</div>
+</footer>
+
+<script>
+  // Hamburger menu toggle
+  const toggle = document.getElementById('menuToggle');
+  const overlay = document.getElementById('navOverlay');
+  const backdrop = document.getElementById('navBackdrop');
+  const navEl = document.querySelector('nav');
+
+  function openMenu() {
+    toggle.classList.add('active');
+    overlay.classList.add('open');
+    backdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    toggle.classList.remove('active');
+    overlay.classList.remove('open');
+    backdrop.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  toggle.addEventListener('click', () => {
+    overlay.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  backdrop.addEventListener('click', closeMenu);
+
+  document.querySelectorAll('.nav-link').forEach(a => {
+    a.addEventListener('click', closeMenu);
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Parallax
+  const heroContent = document.querySelector('.hero-content');
+  const heroSection = document.querySelector('.hero');
+  const sectionNumbers = document.querySelectorAll('.section-number[data-parallax]');
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+  let ticking = false;
+
+  function onScroll() {
+    const scrollY = window.scrollY;
+    const heroH = heroSection.offsetHeight;
+
+    // Nav state
+    navEl.classList.toggle('scrolled', scrollY > heroH * 0.85);
+
+    // Hide scroll indicator as soon as user scrolls
+    scrollIndicator.classList.toggle('hidden', scrollY > 30);
+
+    // Hero content parallax
+    if (scrollY <= heroH) {
+      const offset = scrollY * 0.35;
+      heroContent.style.transform = `translateY(${offset}px)`;
+      heroContent.style.opacity = 1 - (scrollY / heroH) * 0.6;
+    }
+
+    // Section number parallax
+    sectionNumbers.forEach(el => {
+      const speed = parseFloat(el.getAttribute('data-parallax'));
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const distFromCenter = rect.top - window.innerHeight * 0.7;
+        el.style.transform = `translateY(${distFromCenter * speed}px)`;
+      }
+    });
+
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  onScroll();
+</script>
+
+</body>
+</html>
