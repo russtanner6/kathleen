@@ -3,22 +3,45 @@
 ## Project Overview
 Personal website for Kathleen Newrones, a wholistic wellness healing artist based in Laguna Beach, CA. Brand name: **Love Sophia Joy**.
 
-## Tech Stack (CURRENT — being replaced)
-- **Single-page HTML** — all CSS and JS inline in `index.html`
+## Tech Stack (CURRENT)
+- **Next.js 14.2.15** (App Router, TypeScript, React 18)
+- **Tina CMS 2.2** — schema wired in `tina/config.ts`; Tina Cloud activation pending (see SESSION-LOG.md)
+- **Content in Git** — `content/pages/home.json`, `content/settings/site.json`, `content/blog/*.md`
+- **Markdown**: gray-matter + remark for blog post rendering at build time
+- **Formspree**: Contact component ready, needs a form ID added to `home.json`
 - **Fonts**: Google Fonts (Cormorant Garamond, Inter)
-- **Hosting**: Vercel (static site)
+- **Hosting**: Vercel (auto-deploys on push to `main`)
 - **Repository**: https://github.com/russtanner6/kathleen.git
-- **Domain**: lovesophiajoy.com (to be connected via Vercel once registrar credentials are available)
+- **Domain**: lovesophiajoy.com (still pending registrar connection)
+- **Legacy**: original single-file site preserved at `_legacy/index.html`
 
-## Tech Stack (PLANNED — Next Session)
-- **Next.js 14+ (App Router)** — Vercel's native framework
-- **Tina CMS + Tina Cloud** — visual inline editing, free for 2 users (Russ + Kathleen)
-- **Formspree** — contact form submissions (free tier, 50/month)
-- **Content stored in Git** — Markdown/JSON files, version-controlled
-- **Fonts**: Google Fonts (Cormorant Garamond, Inter) — unchanged
-- **Hosting**: Vercel — unchanged
+## Project Structure
+```
+app/                 Next.js App Router pages (layout, home, blog index, blog post)
+components/          React components (Nav, Hero, About, Offerings, …, BlockRenderer, ScrollEffects)
+content/
+  pages/home.json    Block-based homepage content (flexible, reorderable)
+  settings/site.json Brand, copyright, nav links
+  blog/*.md          Blog posts (gray-matter frontmatter + markdown body)
+lib/content.ts       File-reading helpers used by server components
+tina/config.ts       Tina CMS schema
+_legacy/index.html   Original single-file site, kept for reference
+```
 
-## NEXT SESSION: REBUILD TO NEXT.JS + TINA CMS
+## Content editing today (pre-Tina Cloud)
+1. Edit the JSON or Markdown file in `content/`
+2. Commit + push to `main`
+3. Vercel redeploys automatically
+
+Once Tina Cloud is activated (see SESSION-LOG.md), Kathleen will be able to do this visually at `/admin`.
+
+## Local dev commands
+- `npm run dev` — plain Next.js dev server
+- `npm run dev:tina` — Tina admin at `/admin` + Next dev server
+- `npm run build` — production build
+- `npm run start` — serve built site
+
+## DONE — REBUILD TO NEXT.JS + TINA CMS (original plan below, for reference)
 
 ### What needs to happen
 The entire site needs to be rebuilt from `index.html` into a Next.js app with Tina CMS. The visual design, animations, and functionality must be preserved exactly. The goal is to give Kathleen (non-technical client) the ability to edit the site herself through Tina's visual editor.

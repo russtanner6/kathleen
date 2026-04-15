@@ -1,0 +1,17 @@
+{
+  "brand": "Love Sophia Joy",
+  "copyright": "© 2026 Love Sophia Joy • Kathleen Newrones. All rights reserved.",
+  "navLinks": [
+    { "label": "About", "href": "#about" },
+    { "label": "Offerings", "href": "#offerings" },
+    { "label": "Sessions", "href": "#wholeness" },
+    { "label": "Voices", "href": "#voices" },
+    { "label": "Connect", "href": "#connect" },
+    { "label": "Blog", "href": "/blog" }
+  ],
+  "navFooterLinks": [
+    { "label": "YouTube", "url": "https://www.youtube.com/@lovesophiajoy777" },
+    { "label": "Instagram", "url": "#" },
+    { "label": "Facebook", "url": "#" }
+  ]
+}

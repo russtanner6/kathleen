@@ -1,0 +1,197 @@
+{
+  "meta": {
+    "title": "Love Sophia Joy | Kathleen Newrones",
+    "description": "A Wholistic Wellness & Healing Arts Ministry with Kathleen Newrones — sound healing, shamanic work, Human Design, Reiki, and sacred creations from Laguna Beach."
+  },
+  "blocks": [
+    {
+      "_template": "hero",
+      "logoImage": "https://russtanner.xyz/logo.png",
+      "backgroundImage": "https://russtanner.xyz/ocean.jpg",
+      "title": "Love Sophia Joy",
+      "subtitle": "LET TRUE LIGHT LEAD THE WAY TO MIRACLES EVERY DAY"
+    },
+    {
+      "_template": "about",
+      "number": "01",
+      "label": "About",
+      "heading": "I am Kathleen Newrones",
+      "image": "https://russtanner.xyz/kathleen.jpeg",
+      "paragraphs": [
+        "Kathleen is a Wholistic Wellness Healing Artist & Uplifter, weaving a golden tapestry of various art, wellness and healing modalities, including painting, photography, poetry, writing and sounds.",
+        "One of her specialties is expressing in her art the ancient healing language of the Soul, Source and the Cosmos through her Light Language. This evokes a celestial loving joy of remembrance of the truth of who we really are, a beautiful and magnificent sacred star.",
+        "She is an Ambassador for Mother Earth with a profound connection to the Ocean, the Sun and Spirit of Laguna Beach, for which she makes her home and draws her nourishment, replenishment, inspiration and joy.",
+        "She experiences Mother Earth Laguna, and of nature and life itself, as a symphonic thanksgiving and infinite blessing of divine grace, appreciating the love in and of everyone and everything."
+      ]
+    },
+    {
+      "_template": "offerings",
+      "number": "02",
+      "label": "Specializations",
+      "heading": "Sacred Offerings",
+      "body": "Scroll to explore the modalities I weave together for your healing journey.",
+      "cards": [
+        {
+          "number": "01",
+          "icon": "sound",
+          "title": "Sound Healing Journeys",
+          "description": "Vibrational medicine through alchemy crystal bowls, consecrated instruments, and ancient chants drawn from multiple traditions. Elementals and spirit allies often join the work.",
+          "cta": "Book Session"
+        },
+        {
+          "number": "02",
+          "icon": "flame",
+          "title": "Shamanic Healing",
+          "description": "One of the oldest forms of healing on Earth. I journey using rattles and drums to connect with spirit guides, helping you reclaim power, rediscover gifts, and heal ancestral trauma.",
+          "cta": "Book Session"
+        },
+        {
+          "number": "03",
+          "icon": "design",
+          "title": "Human Design",
+          "description": "A map of who you are at your core, weaving I-Ching, chakras, the Tree of Life, and astrology. My readings include practical tools, rituals, and exercises to help you live your design.",
+          "cta": "Book Reading"
+        },
+        {
+          "number": "04",
+          "icon": "divination",
+          "title": "Divination",
+          "description": "Archetypal castings, Akashic records, and Tarot to identify the forces shaping your life since birth. Understand their dynamics, gifts, and shadows.",
+          "cta": "Book Session"
+        },
+        {
+          "number": "05",
+          "icon": "coaching",
+          "title": "Coaching & Mentoring",
+          "description": "You are already whole, wise, and deeply knowledgeable about your path. I hold sacred space for truth-telling, power reclamation, and guided self-discovery.",
+          "cta": "Book Session"
+        },
+        {
+          "number": "06",
+          "icon": "reiki",
+          "title": "Reiki Healing & Teaching",
+          "description": "Universal life force energy to reduce stress, quiet the mind, and restore balance. Hands-on or distance healing, plus Reiki I and II attunement training.",
+          "cta": "Book Session"
+        },
+        {
+          "number": "07",
+          "icon": "constellations",
+          "title": "Family Constellations",
+          "description": "Reveal hidden dynamics in your family system. Heal systemic disharmony within your lineage so love, belonging, and peace can be restored.",
+          "cta": "Book Session"
+        },
+        {
+          "number": "08",
+          "icon": "quantum",
+          "title": "Quantum Field Healing",
+          "description": "Connect with your multidimensional self. Clear energetic blocks, repair timelines, heal karmic trauma, and restore your field using Light Language and healing frequencies.",
+          "cta": "Book Session"
+        },
+        {
+          "number": "09",
+          "icon": "meditation",
+          "title": "Meditation & Mindfulness",
+          "description": "Practical spirituality for everyday life. Guided and silent practices, sound healing integration, and personalized tools for finding calm and clarity.",
+          "cta": "Book Session"
+        },
+        {
+          "number": "10",
+          "icon": "oils",
+          "title": "Essential Oil Blends",
+          "description": "Custom botanical blends crafted with intention to support your healing, grounding, ceremony, and energetic alignment.",
+          "cta": "Inquire"
+        },
+        {
+          "number": "11",
+          "icon": "retreats",
+          "title": "Events & Retreats",
+          "description": "Group sound healing, meditation workshops, cacao ceremonies, and fully customized retreat experiences for your community.",
+          "cta": "Inquire"
+        }
+      ]
+    },
+    {
+      "_template": "wholeness",
+      "number": "03",
+      "label": "Sessions",
+      "heading": "Weave Your Wholeness",
+      "intro": "Being human is a gift. Consciousness with immeasurable power, integrated with a physical body carrying the stories of your lineage. In your essence, you are already whole.",
+      "quote": "The center of this universe lives in your own heart,\ndivided by dark caves, flooded by roaring rivers,\nyet always returning to its golden source.",
+      "body": "In a Wholeness session, I bring together an alchemy of practices to partner with you wherever you are on your path. No shortcuts. No bypasses. Just the authentic work of coming home to yourself.",
+      "ctaText": "Book a Discovery Call"
+    },
+    {
+      "_template": "earthStrip",
+      "elements": [
+        { "icon": "☀️", "label": "Citrine Sun" },
+        { "icon": "🌊", "label": "Sapphire Ocean" },
+        { "icon": "🏖️", "label": "Gold Sand" },
+        { "icon": "🌱", "label": "Lush Life" },
+        { "icon": "🐬", "label": "Free Spirit" }
+      ]
+    },
+    {
+      "_template": "testimonials",
+      "number": "04",
+      "label": "Voices",
+      "heading": "From Those Who've Walked This Path",
+      "items": [
+        {
+          "quote": "Working with Kathleen has been one of the most meaningful experiences of my life. She has a true gift. The connection she creates is powerful, and I feel healing in every session.",
+          "author": "Client"
+        },
+        {
+          "quote": "This has been the best healing approach I've done. Kathleen invests in knowing her clients and tailors every session to their strengths and needs. Her ability to adapt in the moment is tremendous.",
+          "author": "Client"
+        },
+        {
+          "quote": "My Human Design reading was a liberating experience. I learned to recognize what flows naturally with my design and to release what creates friction. Incredibly thorough.",
+          "author": "Client"
+        },
+        {
+          "quote": "Kathleen is a gifted healer who brings love, passion, and genuine care to every session. Being in her presence touches my heart. A true friend, teacher, and healer.",
+          "author": "Client"
+        }
+      ]
+    },
+    {
+      "_template": "creations",
+      "number": "05",
+      "label": "Creations",
+      "heading": "Music, Writing & Sacred Works",
+      "items": [
+        {
+          "visual": "v1",
+          "iconKey": "music",
+          "title": "Sacred Music",
+          "description": "Original albums of healing songs, mantras, and vocal journeys. Music as medicine."
+        },
+        {
+          "visual": "v2",
+          "iconKey": "writing",
+          "title": "Visionary Writing",
+          "description": "Poetry and prose filled with truth, longing, and the courage to begin again."
+        },
+        {
+          "visual": "v3",
+          "iconKey": "oils",
+          "title": "Essential Oil Blends",
+          "description": "Botanical alchemy crafted with intention for healing, ceremony, and daily practice."
+        }
+      ]
+    },
+    {
+      "_template": "contact",
+      "number": "06",
+      "label": "Connect",
+      "heading": "Your Heart Is Calling",
+      "email": "info@lovesophiajoy.com",
+      "formspreeId": "",
+      "socialLinks": [
+        { "label": "YouTube", "url": "https://www.youtube.com/@lovesophiajoy777" },
+        { "label": "Instagram", "url": "#" },
+        { "label": "Facebook", "url": "#" }
+      ]
+    }
+  ]
+}
