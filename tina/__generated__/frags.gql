@@ -1,0 +1,114 @@
+fragment HomeParts on Home {
+  __typename
+  meta {
+    __typename
+    title
+    description
+  }
+  blocks {
+    __typename
+    ... on HomeBlocksHero {
+      logoImage
+      backgroundImage
+      title
+      subtitle
+    }
+    ... on HomeBlocksAbout {
+      number
+      label
+      heading
+      image
+      paragraphs
+    }
+    ... on HomeBlocksOfferings {
+      number
+      label
+      heading
+      body
+      cards {
+        __typename
+        number
+        icon
+        title
+        description
+        cta
+      }
+    }
+    ... on HomeBlocksWholeness {
+      number
+      label
+      heading
+      intro
+      quote
+      body
+      ctaText
+    }
+    ... on HomeBlocksEarthStrip {
+      elements {
+        __typename
+        icon
+        label
+      }
+    }
+    ... on HomeBlocksTestimonials {
+      number
+      label
+      heading
+      items {
+        __typename
+        quote
+        author
+      }
+    }
+    ... on HomeBlocksCreations {
+      number
+      label
+      heading
+      items {
+        __typename
+        visual
+        iconKey
+        title
+        description
+      }
+    }
+    ... on HomeBlocksContact {
+      number
+      label
+      heading
+      email
+      formspreeId
+      socialLinks {
+        __typename
+        label
+        url
+      }
+    }
+  }
+}
+
+fragment SiteSettingsParts on SiteSettings {
+  __typename
+  brand
+  copyright
+  navLinks {
+    __typename
+    label
+    href
+  }
+  navFooterLinks {
+    __typename
+    label
+    url
+  }
+}
+
+fragment PostParts on Post {
+  __typename
+  title
+  date
+  author
+  excerpt
+  featuredImage
+  body
+}

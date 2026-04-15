@@ -29,5 +29,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# tina
-/tina/__generated__
+# tina — generated types/clients only, _schema.json and _graphql.json MUST be committed
+/tina/__generated__/types.ts
+/tina/__generated__/client.ts
+/tina/__generated__/config.prebuild.jsx
