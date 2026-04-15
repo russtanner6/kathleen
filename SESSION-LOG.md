@@ -114,3 +114,62 @@ Committed and pushed. Vercel should auto-detect Next.js now that `package.json` 
 - Connect lovesophiajoy.com domain in Vercel when registrar creds are available
 - Visually QA against the legacy page on mobile and desktop
 - Kick the tires on the blog with a real second post
+
+## 2026-04-15 (later) — Tina Cloud Activation + Vercel Build Fixes
+Everything flagged as "pending" above is now **done** (except Formspree + domain). The Tina admin is live at `https://kathleen-lac.vercel.app/admin/index.html` and the user confirmed the login screen loads.
+
+### What went wrong (and how we fixed it)
+This took 5 iterations. Capturing each gotcha so future-me doesn't re-discover them.
+
+**Gotcha 1 — Vercel was still in "static site" mode.**
+The Vercel project was created back when the repo was a single `index.html`, so its framework preset was locked to "Other" with Output Directory overridden to `public`. First push of the rebuild landed, Next.js compiled cleanly, then Vercel failed with `No Output Directory named "public" found`. Fixed by:
+- Adding `vercel.json` with `{"framework": "nextjs"}` (commit 84c4323)
+- Also manually flipping the framework preset to Next.js and clearing the Output Directory override in Vercel dashboard → Build & Development Settings
+
+**Gotcha 2 — Tina Cloud needed a Content (Read-Only) token, not Search.**
+Tokens tab shows two. Only the Content (Read-Only) one goes into the `TINA_TOKEN` env var. Search token is for a feature we don't use.
+
+**Gotcha 3 — Vercel build command override was OFF.**
+Added `NEXT_PUBLIC_TINA_CLIENT_ID` and `TINA_TOKEN` as env vars, but the build kept running bare `next build` and producing no `/admin`. The Build Command override toggle in Vercel Settings was silently OFF. Flipped ON and set to `tinacms build && next build`.
+
+**Gotcha 4 — `public/` directory didn't exist in the repo.**
+`tinacms build` writes to `public/admin/index.html`. Without `public/` existing, nothing landed. Fixed by adding `public/.gitkeep` (commit c463ff3).
+
+**Gotcha 5 — Chicken-and-egg with Tina Cloud branch indexing.** (The big one.)
+Tina Cloud showed "No branches found" and every Vercel build failed with `Branch 'main' is not on Tina Cloud`. The Project Setup Checklist in Tina's Overview tab said the `tina-lock.json` file is required for Tina Cloud to index content, but that file only exists after running Tina locally once.
+
+What actually fixed it:
+1. Ran `npx tinacms dev --noWatch --port 4002 --datalayer-port 9002` locally — this generated `tina/tina-lock.json` and `tina/__generated__/_schema.json`, `_graphql.json`, etc.
+2. Removed `/tina/__generated__` from .gitignore (the schema/graphql/lookup JSON files inside it MUST be committed) — kept `types.ts`, `client.ts`, `config.prebuild.jsx` gitignored since those are per-machine build artifacts.
+3. Committed `tina/tina-lock.json` and the necessary `__generated__` files (commit e58f264).
+4. Pushed to `main`. Tina Cloud's GitHub App noticed the new files and indexed the branch (~30–60 seconds). "Refresh Branches" in Tina Cloud UI helped.
+5. Redeployed on Vercel manually (the auto-deploy from that push ran before indexing finished, so we hit the same error once more as a race condition — the manual redeploy after indexing completed was the one that worked).
+
+**Gotcha 6 — `tina/__generated__/public/admin/.gitignore` is auto-created.**
+Tina drops a `.gitignore` inside `public/admin/` that excludes `index.html` and `assets/`. This is correct — the admin bundle itself should be built fresh each deploy. Just commit the `.gitignore` file, not the bundle.
+
+### Commits from this sub-session
+- `84c4323` Force Vercel framework preset to nextjs via vercel.json
+- `c463ff3` Add public/ directory so Tina admin build has an output target
+- `e58f264` Commit Tina generated schema + lock file so Tina Cloud can index main
+- `360c2e0` Add EDITING.md — how the site updates through Tina CMS
+
+### Final state as of this commit
+- ✅ Next.js 14 site live at kathleen-lac.vercel.app
+- ✅ Tina admin live at kathleen-lac.vercel.app/admin/index.html
+- ✅ Tina Cloud indexing `main` branch
+- ✅ `tinacms build && next build` passes on Vercel
+- ✅ Client ID (`7adf5d15-5de4-4201-82c1-c17902f0cdf6`) and `TINA_TOKEN` set as Vercel env vars
+- ✅ Editing guide in EDITING.md covers the full workflow
+- ⏳ **Formspree form ID** — user needs to create form, paste ID into `content/pages/home.json` on the `contact` block (or use Tina admin)
+- ⏳ **Invite Kathleen** as a collaborator in Tina Cloud (free tier: 2 users)
+- ⏳ **Domain**: `lovesophiajoy.com` to connect in Vercel when registrar creds available
+- ⏳ **Test edit**: User should click through to `/admin`, make a small edit, confirm it deploys, then revert
+
+### Key files a new session needs to know about
+- `vercel.json` — forces framework to nextjs (do not delete)
+- `public/.gitkeep` — placeholder so `public/` exists (not strictly needed anymore since tina writes here, but harmless)
+- `tina/tina-lock.json` — **must stay committed**; Tina Cloud uses it to index
+- `tina/__generated__/_schema.json`, `_graphql.json`, `_lookup.json` — **must stay committed** (see .gitignore rules)
+- `public/admin/.gitignore` — prevents the built admin bundle from being committed; correct behavior
+- `EDITING.md` — human-readable guide to the editing workflow
