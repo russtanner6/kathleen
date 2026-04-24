@@ -173,3 +173,27 @@ Tina drops a `.gitignore` inside `public/admin/` that excludes `index.html` and 
 - `tina/__generated__/_schema.json`, `_graphql.json`, `_lookup.json` — **must stay committed** (see .gitignore rules)
 - `public/admin/.gitignore` — prevents the built admin bundle from being committed; correct behavior
 - `EDITING.md` — human-readable guide to the editing workflow
+
+## 2026-04-23 — Hide sections 02–05 via a per-block toggle
+### Ask
+Client wanted sections 02 Offerings, 03 Wholeness, 04 Testimonials, and 05 Creations hidden from the live site — not deleted. Earth Strip (unnumbered, sits mid-range) also hidden.
+
+### Approach
+Added a reusable `hidden: boolean` field to every block template in the Tina schema and to nav links. `BlockRenderer` and `Nav` skip items where `hidden === true`. Tina sidebar labels now show `(hidden)` suffix so Kathleen can see what's off at a glance.
+
+Hidden blocks set in `content/pages/home.json`: offerings, wholeness, earthStrip, testimonials, creations.
+Hidden nav links set in `content/settings/site.json`: Offerings, Sessions, Voices (they would scroll to nothing otherwise).
+
+### Why this over deleting
+- Preserves all copy and image refs exactly as-is
+- Kathleen can re-enable any section from `/admin` by toggling one boolean — no redeploy needed beyond Tina's normal save
+- Schema stays identical to the documented architecture; no blocks lost
+
+### Files touched
+- `components/BlockRenderer.tsx` — `if (block?.hidden) return null;`
+- `components/Nav.tsx` — `.filter((l) => !l.hidden)` on navLinks
+- `lib/content.ts` — `hidden?: boolean` added to nav link type
+- `tina/config.ts` — `hidden` field added to every block template + nav link; itemProps shows `(hidden)` suffix
+- `content/pages/home.json`, `content/settings/site.json` — flags set
+
+Commit `e2d3372`. Build verified clean.
