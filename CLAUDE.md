@@ -5,15 +5,23 @@ Personal website for Kathleen Newrones, a wholistic wellness healing artist base
 
 ## Tech Stack (CURRENT)
 - **Next.js 14.2.15** (App Router, TypeScript, React 18)
-- **Tina CMS 2.2** — schema wired in `tina/config.ts`; Tina Cloud activation pending (see SESSION-LOG.md)
+- **Tina CMS 2.2** — Tina Cloud LIVE; schema supports per-block `hidden` toggle so sections can be hidden without deleting (set via Tina admin or `hidden: true` in JSON)
 - **Content in Git** — `content/pages/home.json`, `content/settings/site.json`, `content/blog/*.md`
 - **Markdown**: gray-matter + remark for blog post rendering at build time
-- **Formspree**: Contact component ready, needs a form ID added to `home.json`
+- **Formspree**: Contact component ready, needs a form ID added to `home.json` (recommend destination = `kathleen@lovesophiajoy.com` once Cloudflare Email Routing is live)
 - **Fonts**: Google Fonts (Cormorant Garamond, Inter)
 - **Hosting**: Vercel (auto-deploys on push to `main`)
 - **Repository**: https://github.com/russtanner6/kathleen.git
-- **Domain**: lovesophiajoy.com (still pending registrar connection)
+- **Domain**: lovesophiajoy.com — registrar: Network Solutions; nameservers moved to Cloudflare (`perla`/`thomas.ns.cloudflare.com`) 2026-04-23; zone activation pending; A + CNAME records imported pointing at Vercel, must stay DNS-only (NOT Proxied)
+- **Email**: `kathleen@lovesophiajoy.com` to be set up via Cloudflare Email Routing (free), forwarded to Kathleen's personal inbox. Not yet configured — awaiting zone activation.
 - **Legacy**: original single-file site preserved at `_legacy/index.html`
+
+## Current Content State (2026-04-24)
+- Hero + About (section 01) + Contact (section 06) visible
+- Sections 02 Offerings, 03 Wholeness, Earth Strip, 04 Testimonials, 05 Creations **hidden** via `hidden: true` on each block (not deleted — toggle back on in Tina admin anytime)
+- Nav links Offerings/Sessions/Voices hidden via same mechanism in `site.json`
+- Section numbers (01–06) cleared from all blocks; components skip rendering the `.section-number` div when empty
+- Contact email: `kathleen@lovesophiajoy.com`
 
 ## Project Structure
 ```

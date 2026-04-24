@@ -197,3 +197,55 @@ Hidden nav links set in `content/settings/site.json`: Offerings, Sessions, Voice
 - `content/pages/home.json`, `content/settings/site.json` — flags set
 
 Commit `e2d3372`. Build verified clean.
+
+## 2026-04-24 — Section numbers removed, contact email changed, Cloudflare DNS migration
+### Section numbers
+Client wanted the numeric labels (01–06) gone from every section, visible or hidden. Each block component (About, Offerings, Wholeness, Testimonials, Creations, Contact) now conditionally renders the `.section-number` div via `{number && (...)}` so an empty string leaves no ghost space. All `number` values in `content/pages/home.json` cleared to `""`. Commit `3382a12`.
+
+### Contact email swap
+`info@lovesophiajoy.com` → `kathleen@lovesophiajoy.com` in the `contact` block. Affects the visible email text + mailto link. Formspree form ID is still empty so the form itself doesn't send yet (see below). Commit `1e362ab`.
+
+### Cloudflare DNS + Email Routing (IN PROGRESS)
+**Goal:** set up `kathleen@lovesophiajoy.com` as a forwarding address to Kathleen's personal inbox, then eventually route Formspree notifications through it too.
+
+**State as of end of session 2026-04-24:**
+- Registrar: **Network Solutions**
+- Nameservers changed at Network Solutions to Cloudflare: `perla.ns.cloudflare.com` + `thomas.ns.cloudflare.com`
+- `dig NS lovesophiajoy.com` confirms the change has propagated at least locally
+- Cloudflare zone status: **Pending activation** (awaiting Cloudflare's automated verification — normally 1–24h, user hadn't received the activation email yet when session ended)
+- Cloudflare auto-imported 2 DNS records from Vercel:
+  - A: `lovesophiajoy.com` → `216.198.79.1`
+  - CNAME: `www` → `a8e7508af0135dc5.vercel-dns-017.com`
+- **Both records set to DNS only (gray cloud)** — do not re-enable Proxied. Vercel handles its own SSL/CDN/DDoS; proxying on top causes SSL handshake errors (525/526), redirect loops, and cache conflicts. Cloudflare's "not fully protected" warning for this domain should be **ignored**.
+
+**Remaining steps (for next session):**
+1. Wait for Cloudflare "zone active" email
+2. Confirm `https://lovesophiajoy.com` still loads with valid SSL after activation
+3. Cloudflare dashboard → **Email → Email Routing** → Enable. Accept auto-added MX + SPF records.
+4. **Routing Rules** → create `kathleen@lovesophiajoy.com` → forward to Kathleen's personal inbox
+5. Kathleen verifies the destination by clicking a link Cloudflare emails to her personal inbox
+6. Enable **Catch-all** pointing at the same personal inbox (recommended — catches typos, future aliases)
+7. Test: send from an external account to `kathleen@lovesophiajoy.com`, confirm landing in personal inbox
+
+### Formspree (still pending — same as before, plus a routing improvement)
+Contact form in `components/Contact.tsx` is wired and POSTs to `https://formspree.io/f/{formspreeId}`. Current `formspreeId` is empty in `home.json`, so the form falls through to "Please email kathleen@lovesophiajoy.com directly."
+
+**Recommended setup when ready:**
+- Sign up at formspree.io (free tier: 50 submissions/month)
+- Use `kathleen@lovesophiajoy.com` as the destination (not Kathleen's personal inbox directly). Reason: routes through the Cloudflare forwarding layer, so if Kathleen ever changes her personal inbox, she updates it in one place (Cloudflare), not in Formspree.
+- Verification email from Formspree will arrive via Cloudflare forwarding — serves as a smoke test of the new forwarding setup.
+- Paste form ID into `formspreeId` in `home.json` contact block (or via Tina admin)
+
+### Files touched this date
+- `components/About.tsx`, `Offerings.tsx`, `Wholeness.tsx`, `Testimonials.tsx`, `Creations.tsx`, `Contact.tsx` — `{number && (...)}` conditional
+- `content/pages/home.json` — numbers cleared, email swapped
+
+### What's NOT yet done (ordered by blocker chain)
+1. ⏳ Cloudflare zone activation (automated, just waiting)
+2. ⏳ Email Routing enable + forwarding rule + destination verify
+3. ⏳ Test that `kathleen@lovesophiajoy.com` forwards correctly
+4. ⏳ Formspree signup → form ID into `home.json`
+5. ⏳ Invite Kathleen to Tina Cloud as collaborator
+6. ⏳ Connect `lovesophiajoy.com` in Vercel Domains settings (after zone active)
+7. ⏳ End-to-end Kathleen-does-an-edit test
+8. ⏳ Visual QA against legacy on mobile + desktop
