@@ -26,6 +26,7 @@
     },
     {
       "_template": "offerings",
+      "hidden": true,
       "number": "02",
       "label": "Specializations",
       "heading": "Sacred Offerings",
@@ -112,6 +113,7 @@
     },
     {
       "_template": "wholeness",
+      "hidden": true,
       "number": "03",
       "label": "Sessions",
       "heading": "Weave Your Wholeness",
@@ -122,6 +124,7 @@
     },
     {
       "_template": "earthStrip",
+      "hidden": true,
       "elements": [
         { "icon": "☀️", "label": "Citrine Sun" },
         { "icon": "🌊", "label": "Sapphire Ocean" },
@@ -132,6 +135,7 @@
     },
     {
       "_template": "testimonials",
+      "hidden": true,
       "number": "04",
       "label": "Voices",
       "heading": "From Those Who've Walked This Path",
@@ -156,6 +160,7 @@
     },
     {
       "_template": "creations",
+      "hidden": true,
       "number": "05",
       "label": "Creations",
       "heading": "Music, Writing & Sacred Works",

@@ -59,13 +59,16 @@ export default defineConfig({
             label: 'Page Sections',
             list: true,
             ui: {
-              itemProps: (item: any) => ({ label: item?._template }),
+              itemProps: (item: any) => ({
+                label: `${item?._template}${item?.hidden ? ' (hidden)' : ''}`,
+              }),
             },
             templates: [
               {
                 name: 'hero',
                 label: 'Hero',
                 fields: [
+                  { type: 'boolean', name: 'hidden', label: 'Hidden' },
                   { type: 'image', name: 'logoImage', label: 'Logo' },
                   { type: 'image', name: 'backgroundImage', label: 'Background Image' },
                   { type: 'string', name: 'title', label: 'Title' },
@@ -76,6 +79,7 @@ export default defineConfig({
                 name: 'about',
                 label: 'About',
                 fields: [
+                  { type: 'boolean', name: 'hidden', label: 'Hidden' },
                   { type: 'string', name: 'number', label: 'Number' },
                   { type: 'string', name: 'label', label: 'Label' },
                   { type: 'string', name: 'heading', label: 'Heading' },
@@ -87,6 +91,7 @@ export default defineConfig({
                 name: 'offerings',
                 label: 'Offerings',
                 fields: [
+                  { type: 'boolean', name: 'hidden', label: 'Hidden' },
                   { type: 'string', name: 'number', label: 'Number' },
                   { type: 'string', name: 'label', label: 'Label' },
                   { type: 'string', name: 'heading', label: 'Heading' },
@@ -119,6 +124,7 @@ export default defineConfig({
                 name: 'wholeness',
                 label: 'Wholeness',
                 fields: [
+                  { type: 'boolean', name: 'hidden', label: 'Hidden' },
                   { type: 'string', name: 'number', label: 'Number' },
                   { type: 'string', name: 'label', label: 'Label' },
                   { type: 'string', name: 'heading', label: 'Heading' },
@@ -132,6 +138,7 @@ export default defineConfig({
                 name: 'earthStrip',
                 label: 'Earth Strip',
                 fields: [
+                  { type: 'boolean', name: 'hidden', label: 'Hidden' },
                   {
                     type: 'object',
                     name: 'elements',
@@ -149,6 +156,7 @@ export default defineConfig({
                 name: 'testimonials',
                 label: 'Testimonials',
                 fields: [
+                  { type: 'boolean', name: 'hidden', label: 'Hidden' },
                   { type: 'string', name: 'number', label: 'Number' },
                   { type: 'string', name: 'label', label: 'Label' },
                   { type: 'string', name: 'heading', label: 'Heading' },
@@ -169,6 +177,7 @@ export default defineConfig({
                 name: 'creations',
                 label: 'Creations',
                 fields: [
+                  { type: 'boolean', name: 'hidden', label: 'Hidden' },
                   { type: 'string', name: 'number', label: 'Number' },
                   { type: 'string', name: 'label', label: 'Label' },
                   { type: 'string', name: 'heading', label: 'Heading' },
@@ -191,6 +200,7 @@ export default defineConfig({
                 name: 'contact',
                 label: 'Contact',
                 fields: [
+                  { type: 'boolean', name: 'hidden', label: 'Hidden' },
                   { type: 'string', name: 'number', label: 'Number' },
                   { type: 'string', name: 'label', label: 'Label' },
                   { type: 'string', name: 'heading', label: 'Heading' },
@@ -228,8 +238,13 @@ export default defineConfig({
             name: 'navLinks',
             label: 'Nav Links',
             list: true,
-            ui: { itemProps: (item: any) => ({ label: item?.label }) },
+            ui: {
+              itemProps: (item: any) => ({
+                label: `${item?.label ?? ''}${item?.hidden ? ' (hidden)' : ''}`,
+              }),
+            },
             fields: [
+              { type: 'boolean', name: 'hidden', label: 'Hidden' },
               { type: 'string', name: 'label', label: 'Label' },
               { type: 'string', name: 'href', label: 'Link' },
             ],

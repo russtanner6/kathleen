@@ -15,6 +15,7 @@ export default function BlockRenderer({ blocks }: { blocks: any[] }) {
   return (
     <>
       {blocks.map((block, i) => {
+        if (block?.hidden) return null;
         const key = `${block._template}-${i}`;
         switch (block._template) {
           case 'hero':

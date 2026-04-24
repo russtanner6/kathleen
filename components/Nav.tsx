@@ -51,7 +51,7 @@ export default function Nav({ settings }: { settings: SiteSettings }) {
 
       <div className={`nav-overlay${open ? ' open' : ''}`}>
         <ul>
-          {settings.navLinks.map((link) => (
+          {settings.navLinks.filter((l) => !l.hidden).map((link) => (
             <li key={link.href}>
               <a href={link.href} className="nav-link" onClick={close}>
                 {link.label}

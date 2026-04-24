@@ -3,9 +3,9 @@
   "copyright": "© 2026 Love Sophia Joy • Kathleen Newrones. All rights reserved.",
   "navLinks": [
     { "label": "About", "href": "#about" },
-    { "label": "Offerings", "href": "#offerings" },
-    { "label": "Sessions", "href": "#wholeness" },
-    { "label": "Voices", "href": "#voices" },
+    { "label": "Offerings", "href": "#offerings", "hidden": true },
+    { "label": "Sessions", "href": "#wholeness", "hidden": true },
+    { "label": "Voices", "href": "#voices", "hidden": true },
     { "label": "Connect", "href": "#connect" },
     { "label": "Blog", "href": "/blog" }
   ],

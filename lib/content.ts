@@ -14,7 +14,7 @@ export type HomeData = {
 export type SiteSettings = {
   brand: string;
   copyright: string;
-  navLinks: { label: string; href: string }[];
+  navLinks: { label: string; href: string; hidden?: boolean }[];
   navFooterLinks: { label: string; url: string }[];
 };
 
