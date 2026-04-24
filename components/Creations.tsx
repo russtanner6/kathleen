@@ -16,9 +16,11 @@ export default function Creations({ number, label, heading, items }: Props) {
   return (
     <section className="section-deep">
       <div className="inner">
-        <div className="section-number reveal" data-parallax="0.15">
-          {number}
-        </div>
+        {number && (
+          <div className="section-number reveal" data-parallax="0.15">
+            {number}
+          </div>
+        )}
         <p className="section-label reveal reveal-delay-1">{label}</p>
         <h2 className="section-heading reveal reveal-delay-2" style={{ marginBottom: '3rem' }}>
           {heading}

@@ -50,9 +50,11 @@ export default function Contact({
   return (
     <section className="contact-section" id="connect">
       <div className="contact-inner">
-        <div className="section-number reveal" data-parallax="0.15">
-          {number}
-        </div>
+        {number && (
+          <div className="section-number reveal" data-parallax="0.15">
+            {number}
+          </div>
+        )}
         <p className="section-label reveal reveal-delay-1">{label}</p>
         <h2 className="section-heading reveal reveal-delay-2">{heading}</h2>
         <p className="contact-email reveal reveal-delay-3">

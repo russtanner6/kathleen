@@ -13,7 +13,7 @@
     },
     {
       "_template": "about",
-      "number": "01",
+      "number": "",
       "label": "About",
       "heading": "I am Kathleen Newrones",
       "image": "https://russtanner.xyz/kathleen.jpeg",
@@ -27,7 +27,7 @@
     {
       "_template": "offerings",
       "hidden": true,
-      "number": "02",
+      "number": "",
       "label": "Specializations",
       "heading": "Sacred Offerings",
       "body": "Scroll to explore the modalities I weave together for your healing journey.",
@@ -114,7 +114,7 @@
     {
       "_template": "wholeness",
       "hidden": true,
-      "number": "03",
+      "number": "",
       "label": "Sessions",
       "heading": "Weave Your Wholeness",
       "intro": "Being human is a gift. Consciousness with immeasurable power, integrated with a physical body carrying the stories of your lineage. In your essence, you are already whole.",
@@ -136,7 +136,7 @@
     {
       "_template": "testimonials",
       "hidden": true,
-      "number": "04",
+      "number": "",
       "label": "Voices",
       "heading": "From Those Who've Walked This Path",
       "items": [
@@ -161,7 +161,7 @@
     {
       "_template": "creations",
       "hidden": true,
-      "number": "05",
+      "number": "",
       "label": "Creations",
       "heading": "Music, Writing & Sacred Works",
       "items": [
@@ -187,7 +187,7 @@
     },
     {
       "_template": "contact",
-      "number": "06",
+      "number": "",
       "label": "Connect",
       "heading": "Your Heart Is Calling",
       "email": "info@lovesophiajoy.com",
