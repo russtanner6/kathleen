@@ -51,7 +51,7 @@ export function getAllBlogPosts(): BlogPostMeta[] {
       slug,
       title: data.title ?? slug,
       date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
-      author: data.author ?? 'Kathleen Newrones',
+      author: data.author ?? 'Kathleen',
       excerpt: data.excerpt ?? '',
       featuredImage: data.featuredImage,
     } as BlogPostMeta;
@@ -69,7 +69,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
     slug,
     title: data.title ?? slug,
     date: data.date ? new Date(data.date).toISOString() : new Date().toISOString(),
-    author: data.author ?? 'Kathleen Newrones',
+    author: data.author ?? 'Kathleen',
     excerpt: data.excerpt ?? '',
     featuredImage: data.featuredImage,
     contentHtml: processed.toString(),

@@ -197,6 +197,14 @@ export default defineConfig({
                 ],
               },
               {
+                name: 'tagline',
+                label: 'Tagline',
+                fields: [
+                  { type: 'boolean', name: 'hidden', label: 'Hidden' },
+                  { type: 'string', name: 'text', label: 'Text' },
+                ],
+              },
+              {
                 name: 'contact',
                 label: 'Contact',
                 fields: [

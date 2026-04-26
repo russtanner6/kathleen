@@ -6,6 +6,7 @@ import EarthStrip from './EarthStrip';
 import Testimonials from './Testimonials';
 import Creations from './Creations';
 import Contact from './Contact';
+import Tagline from './Tagline';
 
 /**
  * Maps a block _template string to the component that renders it.
@@ -34,6 +35,8 @@ export default function BlockRenderer({ blocks }: { blocks: any[] }) {
             return <Creations key={key} {...block} />;
           case 'contact':
             return <Contact key={key} {...block} />;
+          case 'tagline':
+            return <Tagline key={key} {...block} />;
           default:
             return null;
         }

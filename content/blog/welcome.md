@@ -1,7 +1,7 @@
 ---
 title: Welcome to Love Sophia Joy
 date: 2026-04-15
-author: Kathleen Newrones
+author: Kathleen
 excerpt: A note of welcome and the intention behind this digital sanctuary.
 featuredImage: https://russtanner.xyz/ocean.jpg
 ---

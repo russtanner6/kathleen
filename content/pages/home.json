@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Love Sophia Joy | Kathleen Newrones",
-    "description": "A Wholistic Wellness & Healing Arts Ministry with Kathleen Newrones — sound healing, shamanic work, Human Design, Reiki, and sacred creations from Laguna Beach."
+    "title": "Love Sophia Joy | Kathleen",
+    "description": "A Wholistic Wellness & Healing Arts Ministry with Kathleen — sound healing, shamanic work, Human Design, Reiki, and sacred creations from Laguna Beach."
   },
   "blocks": [
     {
@@ -15,7 +15,7 @@
       "_template": "about",
       "number": "",
       "label": "About",
-      "heading": "I am Kathleen Newrones",
+      "heading": "I am Kathleen",
       "image": "https://russtanner.xyz/kathleen.jpeg",
       "paragraphs": [
         "Kathleen is a Wholistic Wellness Healing Artist & Uplifter, weaving a golden tapestry of various art, wellness and healing modalities, including painting, photography, poetry, writing and sounds.",
@@ -197,6 +197,10 @@
         { "label": "Instagram", "url": "#" },
         { "label": "Facebook", "url": "#" }
       ]
+    },
+    {
+      "_template": "tagline",
+      "text": "A Wholistic Wellness & Healing Arts Ministry"
     }
   ]
 }

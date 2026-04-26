@@ -249,3 +249,36 @@ Contact form in `components/Contact.tsx` is wired and POSTs to `https://formspre
 6. ⏳ Connect `lovesophiajoy.com` in Vercel Domains settings (after zone active)
 7. ⏳ End-to-end Kathleen-does-an-edit test
 8. ⏳ Visual QA against legacy on mobile + desktop
+
+## 2026-04-26 — Drop "Newrones", warmer gold, bottom tagline block
+
+### Ask (decoded from Kathleen's text messages)
+1. Strip last name from header/footer — just "Love Sophia Joy" + "Kathleen"
+2. No phone on the website (already true — confirmed nothing to remove)
+3. Route `kathleen@lovesophiajoy.com` to `Kathleennewrones1111@gmail.com` (Cloudflare task — pending)
+4. Bottom-of-homepage tagline: "A Wholistic Wellness & Healing Arts Ministry"
+5. She also pitched a "INSPIRE 💎 UPLIFT 💎 EMPOWER 💎 ALIGN 💎 SHINE" line, then walked it back in the same thread — "probably too much on homepage… better in body copy." Skipped on homepage; saving for later.
+6. "LSJ & logo slightly more gold" — bumped the CSS gold token. Logo recoloring deferred (external PNG; needs new asset or CSS filter — punt until she sees the color bump).
+
+### Changes shipped
+- Stripped "Newrones" from every visible/metadata location:
+  - `content/settings/site.json` — copyright now `© 2026 Love Sophia Joy • Kathleen. All rights reserved.`
+  - `content/pages/home.json` — meta title `Love Sophia Joy | Kathleen`, meta description, About heading `I am Kathleen`
+  - `lib/content.ts` — default blog author fallback `Kathleen`
+  - `content/blog/welcome.md` — frontmatter author `Kathleen`
+- Color: `--gold` `#D4A017` → `#D4AF37` (classic 24k gold, matches her notes.md preference). Replaced two hardcoded `#D4A017` in `.nav-overlay` hover states with `var(--gold)`. Updated the `.contact-email` rgba border to match the new RGB.
+- Added a new **Tagline block**:
+  - `components/Tagline.tsx` — small italic centered, all-caps, citrine-gold, letter-spaced
+  - Registered in `BlockRenderer.tsx`
+  - Added template to `tina/config.ts` (Tina-editable: `text` field + `hidden` toggle)
+  - Instance added to `home.json` after the contact block: `"A Wholistic Wellness & Healing Arts Ministry"`
+  - CSS class `.page-tagline` in `globals.css` (mobile breakpoint included)
+
+### Why a block (not hardcoded in Footer)
+Kathleen needs to be able to edit, hide, or move this line via Tina. Following the same block pattern as the rest of the homepage means she gets one consistent editing UX.
+
+### Still pending (reasons in parens)
+- Logo recolor (external PNG asset — wait for Kathleen to see the gold token bump first; if still not enough, drop a new gold logo into `/public/images/`)
+- Email Routing → `Kathleennewrones1111@gmail.com` (Cloudflare dashboard task; zone activation status unknown until checked)
+- New offerings copy — Kathleen said "getting to you today" 2026-04-24; not received yet
+- INSPIRE / UPLIFT / EMPOWER / ALIGN / SHINE tagline reserved for body copy somewhere later
