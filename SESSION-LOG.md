@@ -282,3 +282,11 @@ Kathleen needs to be able to edit, hide, or move this line via Tina. Following t
 - Email Routing → `Kathleennewrones1111@gmail.com` (Cloudflare dashboard task; zone activation status unknown until checked)
 - New offerings copy — Kathleen said "getting to you today" 2026-04-24; not received yet
 - INSPIRE / UPLIFT / EMPOWER / ALIGN / SHINE tagline reserved for body copy somewhere later
+
+### Formspree wired (commit c0e1dba)
+Form ID `meevwaza` pasted into the contact block (`https://formspree.io/f/meevwaza`). The contact form on the live site now POSTs to Formspree. Delivery destination is configured inside the Formspree dashboard, not in code — recommend `Kathleennewrones1111@gmail.com` for now and swap to `kathleen@lovesophiajoy.com` once Cloudflare Email Routing is active.
+
+### Vercel deploy fix (commit 7cb9c89)
+The first push of this session (commit f7c379f) failed Vercel build at `tinacms build && next build`. Root cause: committed `tina/__generated__/frags.gql` and `schema.gql` were stale — they didn't include the per-block `hidden` field added 2026-04-23, nor the new `HomeBlocksTagline` type added in f7c379f. Regenerated locally via `npx tinacms dev --noWatch --port 4003 --datalayer-port 9003` and committed the updated `frags.gql`, `schema.gql`, and `tina-lock.json`.
+
+**Gotcha 9 (next session reminder):** Whenever you add or change a block template in `tina/config.ts`, regenerate the `__generated__/*.gql` files locally and commit them in the SAME push. Otherwise Vercel's `tinacms build` step fails because the GraphQL schema doesn't match the live config.

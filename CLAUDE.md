@@ -8,7 +8,7 @@ Personal website for Kathleen Newrones, a wholistic wellness healing artist base
 - **Tina CMS 2.2** — Tina Cloud LIVE; schema supports per-block `hidden` toggle so sections can be hidden without deleting (set via Tina admin or `hidden: true` in JSON)
 - **Content in Git** — `content/pages/home.json`, `content/settings/site.json`, `content/blog/*.md`
 - **Markdown**: gray-matter + remark for blog post rendering at build time
-- **Formspree**: Contact component ready, needs a form ID added to `home.json` (recommend destination = `kathleen@lovesophiajoy.com` once Cloudflare Email Routing is live)
+- **Formspree**: form `meevwaza` wired in `home.json`; form posts to `https://formspree.io/f/meevwaza`. Delivery destination is configured inside Formspree dashboard (currently routing to Kathleen's gmail; swap to `kathleen@lovesophiajoy.com` once Cloudflare Email Routing is live).
 - **Fonts**: Google Fonts (Cormorant Garamond, Inter)
 - **Hosting**: Vercel (auto-deploys on push to `main`)
 - **Repository**: https://github.com/russtanner6/kathleen.git
