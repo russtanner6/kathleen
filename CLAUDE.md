@@ -173,7 +173,7 @@ Convert each HTML section to a component:
 - **Client email**: info@lovesophiajoy.com
 - **YouTube**: @lovesophiajoy777
 - **Domains of interest**: lovesophiajoy.com, lovesophiajoy.love, lovesophiajoy.org
-- **Images currently hosted at**: russtanner.xyz (ocean.jpg, kathleen.jpeg, logo.png) — move to /public/images/ during rebuild
+- **Images**: served from `/public/images/` (`ocean.jpg`, `kathleen.jpeg`, `logo.png`). Previously hotlinked from russtanner.xyz; that domain was rebuilt Aug 2026 and stopped serving them, breaking every image at once. Never reference images from an outside domain — see `public/images/README.md`.
 - **GitHub**: https://github.com/russtanner6/kathleen.git
 - **Vercel project**: Kathleen
 

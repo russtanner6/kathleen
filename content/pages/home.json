@@ -6,8 +6,8 @@
   "blocks": [
     {
       "_template": "hero",
-      "logoImage": "https://russtanner.xyz/logo.png",
-      "backgroundImage": "https://russtanner.xyz/ocean.jpg",
+      "logoImage": "/images/logo.png",
+      "backgroundImage": "/images/ocean.jpg",
       "title": "Love Sophia Joy",
       "subtitle": "LET TRUE LIGHT LEAD THE WAY TO MIRACLES EVERY DAY"
     },
@@ -16,7 +16,7 @@
       "number": "",
       "label": "About",
       "heading": "I am Kathleen",
-      "image": "https://russtanner.xyz/kathleen.jpeg",
+      "image": "/images/kathleen.jpeg",
       "paragraphs": [
         "Kathleen is a Wholistic Wellness Healing Artist & Uplifter, weaving a golden tapestry of various art, wellness and healing modalities, including painting, photography, poetry, writing and sounds.",
         "One of her specialties is expressing in her art the ancient healing language of the Soul, Source and the Cosmos through her Light Language. This evokes a celestial loving joy of remembrance of the truth of who we really are, a beautiful and magnificent sacred star.",

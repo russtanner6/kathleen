@@ -290,3 +290,50 @@ Form ID `meevwaza` pasted into the contact block (`https://formspree.io/f/meevwa
 The first push of this session (commit f7c379f) failed Vercel build at `tinacms build && next build`. Root cause: committed `tina/__generated__/frags.gql` and `schema.gql` were stale — they didn't include the per-block `hidden` field added 2026-04-23, nor the new `HomeBlocksTagline` type added in f7c379f. Regenerated locally via `npx tinacms dev --noWatch --port 4003 --datalayer-port 9003` and committed the updated `frags.gql`, `schema.gql`, and `tina-lock.json`.
 
 **Gotcha 9 (next session reminder):** Whenever you add or change a block template in `tina/config.ts`, regenerate the `__generated__/*.gql` files locally and commit them in the SAME push. Otherwise Vercel's `tinacms build` step fails because the GraphQL schema doesn't match the live config.
+
+## 2026-08-20 — Images disappeared sitewide (broken hotlink)
+
+### Symptom
+Every image on the live site stopped rendering — hero logo, hero background,
+and the About portrait — with no recent commit or deploy to this repo. Last
+deploy here was 2026-04-27 (`65a7398`).
+
+### Root cause
+All three images were hotlinked from a third-party domain:
+
+```
+https://russtanner.xyz/logo.png
+https://russtanner.xyz/ocean.jpg
+https://russtanner.xyz/kathleen.jpeg
+```
+
+`russtanner.xyz` is a domain on the separate `russtannerxyz` Vercel project.
+That project was rebuilt as a personal site and redeployed 2026-08-17
+(`8eaf7b4`). Its repo contains only `index.html`, `russ.jpg`, and
+`vercel.json` — the three files above are not in it, nor anywhere in its git
+history. So the domain kept resolving while all three URLs became 404s, and
+every image broke at once without this repo changing.
+
+This was a known risk flagged in `CLAUDE.md` since the initial commit
+("move to /public/images/ during rebuild") that was never actioned.
+
+### Fix
+- Repointed all four references to repo-local paths (`/images/…`) —
+  `content/pages/home.json` (3) and `content/blog/welcome.md` (1, the blog
+  featured image, easy to miss).
+- Added `public/images/` with a README naming the three required files.
+  This is also Tina's configured media root, so uploads through `/admin`
+  land here.
+- Removed the now-dead `images.remotePatterns` entry for `russtanner.xyz`
+  from `next.config.js` — nothing in the app uses `next/image`.
+- Verified `npm run build` succeeds and the prerendered HTML contains only
+  `/images/…` paths with no remaining hotlinks.
+
+### Still outstanding
+The three original image files could not be recovered. They were never
+committed to this repo (checked full history), are not in the `russtannerxyz`
+repo or its history, and are not in Drive or Box. They must be dropped into
+`public/images/` as `logo.png`, `ocean.jpg`, and `kathleen.jpeg` — until then
+those images render as nothing.
+
+Note for future work: never reference site images from an outside domain.
