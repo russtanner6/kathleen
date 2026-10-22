@@ -8,8 +8,9 @@ export function generateStaticParams() {
   return getAllBlogPosts().map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = await getBlogPost(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
   if (!post) return { title: 'Not Found' };
   return {
     title: `${post.title} | Love Sophia Joy`,
@@ -17,8 +18,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = await getBlogPost(params.slug);
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = await getBlogPost(slug);
   if (!post) notFound();
   const settings = getSiteSettings();
 
