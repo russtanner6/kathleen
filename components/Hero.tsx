@@ -10,7 +10,7 @@ export default function Hero({ logoImage, backgroundImage, title, subtitle }: Pr
     <section className="hero">
       <div
         className="hero-bg"
-        style={{ backgroundImage: `url('${backgroundImage}')` }}
+        style={backgroundImage ? { backgroundImage: `url('${backgroundImage}')` } : undefined}
       />
       <div className="hero-grain" />
       <div className="hero-content" data-parallax="0.4">

@@ -12,19 +12,21 @@ export default function About({ number, label, heading, image, paragraphs }: Pro
       <div className="inner">
         <div className="about-grid">
           <div>
-            <div className="about-image reveal" style={{ padding: 0 }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={image}
-                alt={heading}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  borderRadius: 4,
-                  display: 'block',
-                }}
-              />
+            <div className="about-image reveal" style={image ? { padding: 0 } : undefined}>
+              {image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={image}
+                  alt={heading}
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    borderRadius: 4,
+                    display: 'block',
+                  }}
+                />
+              ) : null}
             </div>
           </div>
           <div>
