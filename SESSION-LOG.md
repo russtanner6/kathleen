@@ -290,3 +290,30 @@ Form ID `meevwaza` pasted into the contact block (`https://formspree.io/f/meevwa
 The first push of this session (commit f7c379f) failed Vercel build at `tinacms build && next build`. Root cause: committed `tina/__generated__/frags.gql` and `schema.gql` were stale — they didn't include the per-block `hidden` field added 2026-04-23, nor the new `HomeBlocksTagline` type added in f7c379f. Regenerated locally via `npx tinacms dev --noWatch --port 4003 --datalayer-port 9003` and committed the updated `frags.gql`, `schema.gql`, and `tina-lock.json`.
 
 **Gotcha 9 (next session reminder):** Whenever you add or change a block template in `tina/config.ts`, regenerate the `__generated__/*.gql` files locally and commit them in the SAME push. Otherwise Vercel's `tinacms build` step fails because the GraphQL schema doesn't match the live config.
+
+## 2026-11-16 — russtanner.xyz images all 404'd; graceful-degrade fix pushed (commit cf90a3f)
+
+### What broke
+Every image on the live site was hard-coded to `https://russtanner.xyz/{logo.png, ocean.jpg, kathleen.jpeg}`. All three now return 404 (the domain redirects to `www.russtanner.xyz` then 404s each file). The 2026-04-15 rebuild log already flagged this fragility and said "move to /public/images/ during rebuild" — it never got done.
+
+### Recovery attempts that failed
+- No local copies anywhere on this Mac, the NAS, or any sibling project
+- No `russtanner.xyz` source project exists locally
+- Wayback has a snapshot of `lovesophiajoy.com` (2025-07-12) but did NOT crawl the embedded `russtanner.xyz` image URLs — `archive.org/wayback/available` returns empty for all three
+
+### Fix shipped (cf90a3f)
+Rather than guessing at placeholder assets before Kathleen's call, cleared the three broken URLs and made the components tolerate empty image strings so the live site stops showing broken-image icons:
+- `components/Hero.tsx` — `.hero-bg` style object is `undefined` when `backgroundImage` is empty. The dark gradient + gold radial overlay in `.hero-bg::after` + the grain layer render on their own and look intentional.
+- `components/About.tsx` — `<img>` only renders when `image` is truthy. `.about-image` already has a `linear-gradient(145deg, #1a1a1a, #2a2a2a)` fallback with the gold accent bar on top, so the About column still has visual weight.
+- `content/pages/home.json` — `logoImage`, hero `backgroundImage`, About `image` all set to `""`
+- `content/blog/welcome.md` — `featuredImage: ""` (blog pages don't render it today anyway, but kept clean)
+- `public/images/.gitkeep` — directory now exists ready for Kathleen's incoming assets
+
+### Still to do after her next call
+1. Get logo PNG (transparent, gold-forward) → `public/images/logo.png` → set `logoImage: "/images/logo.png"`
+2. Get hero background (ocean/landscape) → `public/images/ocean.jpg` → set `backgroundImage: "/images/ocean.jpg"`
+3. Get About headshot → `public/images/kathleen.jpg` → set `image: "/images/kathleen.jpg"`
+4. Figure out what `Pictures/IMG_20180823_185153659_HDR~2.jpg` (5344×3006 landscape, ~4.3MB) is for — Kathleen dropped it in `Pictures/` at the repo root; leaving untracked until her intent is clear
+
+### GitHub email-privacy gotcha
+First push rejected with GH007 "Your push would publish a private email address" — the repo's prior 18 commits all used `tanner2001byu@gmail.com`, so GitHub flipped the "block pushes that expose my email" setting on at some point between the last session and this one. Amended the commit via `--author=...` + `GIT_COMMITTER_EMAIL=...` to `180343826+russtanner6@users.noreply.github.com` and the push went through. Permanent fix options: (a) toggle the setting off at https://github.com/settings/emails, or (b) set `git config user.email` in this repo to the noreply form so every future commit anonymizes automatically. Did NOT change git config without explicit permission.
