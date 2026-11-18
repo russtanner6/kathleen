@@ -325,3 +325,67 @@ After pushing `cf90a3f` and `67991cb`, the live site still showed the broken `ru
 
 ### Prior Claude session already fixed this on a branch, but never merged
 During triage noticed branch `claude/client-website-images-h7p8yz` (commit `06c5922`, 2026-08-20) which did essentially the same URL fix I did here — `/images/logo.png` etc., removed `remotePatterns` from next.config.js, added `public/images/README.md` listing the three required files. That branch's Vercel preview built cleanly (dpl_5Buy1cPVwzutg3Ad15SgvG6ycLVG, state READY) because Node was still 24.x back in August. It was never merged, presumably because without the actual image files the site still showed nothing — same end state as my fix. Leaving the branch unmerged; my main-branch version supersedes it and additionally makes the components tolerate empty image URLs (so the dark gradient shows up instead of a broken-image icon).
+
+## 2026-11-18 — Full site rebuild: Kathleen's new copy + palette
+
+### What triggered it
+Kathleen sent over `LOVE SOPHIA JOY WEBSITE COPY NEW 11.18.26.docx` with fully rewritten copy (she'd lost her old draft before leaving for Durango) plus the resent original portrait photo (`Sophia2018-3189.jpg`, 2659×4004, white-dress / white-dog / Chicago lake). Russ had also archived mood-board images in the previous session (`reference/design/kathleen-{book-cover-mockups,vision-cards}.jpg`). No haggling allowed — "make it look amazing."
+
+### New site structure
+- Homepage reorganized into her named sections: **Welcome → Purpose → Mission → Process → Foundation**
+- Each section has an eyebrow (the three-word mantra: "Miracles · Synchronicity · Liberation" etc.), a heading, and body paragraphs
+- Two metallic-gold quote callouts: "Your presence is your present." (Welcome) and the twin Foundation quotes ("Forget all the laws that you know…" + Genesis 1:31)
+- Sub-pages live at `/offerings`, `/about`, `/heart-work`, `/gifts`, `/resources` (gifts + heart-work are "coming soon" placeholders per her notes)
+- Nav rebuilt: five homepage anchors + six sub-page links + Contact
+
+### New components
+- `Welcome.tsx` — full-viewport opener with ocean bg, portrait on right, warm veil, gold quote inline
+- `Section.tsx` — reusable block for Purpose/Mission/Process, theme prop toggles cream vs emerald
+- `Foundation.tsx` — special two-quote closing section with emerald aura behind
+- Legacy blocks (Hero, About, Offerings cards, Wholeness, EarthStrip, Testimonials, Creations) kept in schema but marked `hidden: true` in home.json — Kathleen can revive any of them from Tina
+
+### Palette shift
+Away from near-black dark theme toward her book-cover mood:
+- Primary bg: cream (`#FDF7EC`) alternating with dark emerald (`#0E4B3A`) sections
+- Gold: `#D4AF37` / `#E8C547` / `#F2C94C` (used as metallic gradient on the quotes)
+- Emerald ink: `#1B5E20` (her handwritten ink color)
+- Peach/coral accent: `#F4C9A8` (book-cover gradient top)
+- Teal: `#3FA395` (ocean / surf)
+
+Gold quotes use `background-clip: text` with a 4-stop gradient for the metallic sheen.
+
+### Image handling
+- Portrait cropped top-anchored to 68% height ("right beneath where my hand is holding Sophia") via `ffmpeg crop=2659:2720:0:0`, scaled to 1400 wide, saved as `/public/images/kathleen-portrait.jpg` (~468 KB)
+- Hero landscape (`Pictures/IMG_20180823…`) scaled to 2400 wide, saved as `/public/images/hero-ocean.jpg` (~546 KB) — used as Welcome bg
+- `Pictures/` raw source also committed (archive, 4 MB) — lesson from the russtanner.xyz debacle
+
+### Footer / brand rename
+- Brand: `LOVE SOPHIA JOY` (all caps, gold, serif)
+- Signature line: `LOVE KATHLEEN CITRINE` (her working name for the book series; also now the signoff)
+- Copyright: `© 2026 LOVE SOPHIA JOY · LOVE KATHLEEN CITRINE · All rights reserved.`
+
+### Gotchas during the push
+
+**Gotcha 11:** Tina GraphQL field conflict across blocks.
+First Vercel build failed with `Fields "intro" conflict because they return conflicting types "[String]" and "String"`. My new Foundation block had `intro: list of strings`, but the legacy Wholeness block had `intro: string` — Tina builds a single unified GraphQL schema so same-name-different-shape across block templates breaks codegen. Fixed by renaming Foundation's fields to `introParagraphs` and `middleParagraphs`. Rule: when adding a new Tina block template, grep the existing config for every field name you plan to use and avoid collisions with differently-shaped fields in any other block (even hidden ones).
+
+**Gotcha 12:** Tina Cloud index gets stale across major schema changes.
+Second build failed with `TinaFetchError: Unable to seed content/pages/home.json (caused by: Block template "welcome" is not defined for field "blocks")` and `IndexFailedError`. Tina Cloud maintains its own server-side schema; after a large repo-side schema change (new block templates), the index needs to be re-synced or the build's `tinacms build` step fails. Error message prescribes: "click the Reindex button for 'main' in the Tina Cloud configuration for this project" (a UI click Russ has to do).
+
+**Workaround shipped:** overrode the Vercel build command via `vercel.json` → `"buildCommand": "next build"`, bypassing `tinacms build` entirely. The live site doesn't need Tina Cloud — content is served from JSON files via lib/content.ts. Pre-built admin assets under `public/admin/` are committed, so `/admin` still works for navigation; actual editing will land once the Tina Cloud index is refreshed.
+
+**Todo for Russ:** reindex in Tina Cloud when convenient. Then can decide whether to revert the vercel.json buildCommand override or leave it (there's no strong reason to need `tinacms build` on every deploy once content/schema are in sync).
+
+### For Kathleen
+- Wrote `FOR-KATHLEEN.md` — a warm, non-technical one-pager explaining how to log in, edit text, swap photos, publish blog posts, and what requires Russ vs what she can do herself
+- Updated `EDITING.md` (technical ref) to reflect the new block types and task recipes
+
+### Deferred to a future session
+- Cloudflare zone activation → Email Routing for kathleen@lovesophiajoy.com (pending from April — still unblocked)
+- Logo (none in place; brandmark currently rendered as styled text)
+- Tina Cloud reindex (needs a UI click in Russ's Tina Cloud dashboard)
+- Decide final Contact handling — email vs form only vs show cell (she asked "Should we put my cell?" in the doc — defaulted to NO for public-site safety; left kathleen@lovesophiajoy.com on display)
+- Blog: currently reachable at `/blog` but no link from the new nav — decide whether to surface
+- /heart-work gallery (she needs more time to upload pieces)
+- /gifts signup flow ("after Thanksgiving" per her note)
+- /resources content (empty intentionally)
