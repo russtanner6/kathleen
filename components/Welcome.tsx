@@ -36,41 +36,38 @@ export default function Welcome({
         <h1 className="welcome-title reveal reveal-delay-1">{title}</h1>
         <div className="welcome-line reveal reveal-delay-2" />
 
-        <div className="welcome-grid">
-          <div className="welcome-copy">
-            {openingParagraphs.map((p, i) => (
-              <p key={`o-${i}`} className="welcome-body reveal reveal-delay-2">
-                {p}
-              </p>
-            ))}
-
-            {goldQuote && (
-              <blockquote className="gold-quote reveal reveal-delay-3">
-                <span className="gold-quote-mark" aria-hidden>“</span>
-                <span className="gold-quote-text">{goldQuote}</span>
-                {goldAttribution && (
-                  <cite className="gold-quote-cite">{goldAttribution}</cite>
-                )}
-              </blockquote>
-            )}
-
-            {closingParagraphs.map((p, i) => (
-              <p key={`c-${i}`} className="welcome-body reveal">
-                {p}
-              </p>
-            ))}
+        {portraitImage && (
+          <div className="welcome-portrait reveal reveal-delay-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={portraitImage} alt="Kathleen & Sophia at the ocean" />
+            <div className="welcome-portrait-frame" aria-hidden />
           </div>
+        )}
 
-          {portraitImage && (
-            <div className="welcome-portrait reveal reveal-delay-2">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={portraitImage} alt="Kathleen & Sophia at the ocean" />
-              <div className="welcome-portrait-frame" aria-hidden />
-            </div>
+        <div className="welcome-copy">
+          {openingParagraphs.map((p, i) => (
+            <p key={`o-${i}`} className="welcome-body reveal reveal-delay-2">
+              {p}
+            </p>
+          ))}
+
+          {goldQuote && (
+            <blockquote className="gold-quote reveal reveal-delay-3">
+              <span className="gold-quote-mark" aria-hidden>“</span>
+              <span className="gold-quote-text">{goldQuote}</span>
+              {goldAttribution && (
+                <cite className="gold-quote-cite">{goldAttribution}</cite>
+              )}
+            </blockquote>
           )}
+
+          {closingParagraphs.map((p, i) => (
+            <p key={`c-${i}`} className="welcome-body reveal">
+              {p}
+            </p>
+          ))}
         </div>
       </div>
-
     </section>
   );
 }
