@@ -6,7 +6,7 @@
   "blocks": [
     {
       "_template": "hero",
-      "logoImage": "/images/logo.svg",
+      "logoImage": "",
       "backgroundImage": "/images/hero-ocean.jpg",
       "title": "Love Sophia Joy",
       "subtitle": "Let True Light Lead the Way to Miracles Every Day"
