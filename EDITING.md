@@ -40,23 +40,29 @@ The homepage is **block-based**. It's a vertical stack of sections that you can:
 - Add new ones (from the set of block types below)
 - Remove ones you don't want
 
-### The block types
+### The active block types (what the live site uses right now)
 
 | Block | What it is |
 |---|---|
-| **Hero** | Top of the page — ocean background, logo, title, mantra line |
-| **About** | Two-column section with Kathleen's photo + bio paragraphs |
-| **Offerings** | The horizontal-scroll row of modality cards (Sound Healing, Shamanic, Human Design, …) |
-| **Wholeness** | Centered "Weave Your Wholeness" section with intro, quote, body, and a CTA button |
-| **Earth Strip** | The thin band with emoji icons (Citrine Sun, Sapphire Ocean, etc.) |
-| **Testimonials** | The 4-quote grid under "From Those Who've Walked This Path" |
-| **Creations** | The 3-card row for Sacred Music, Visionary Writing, Essential Oils |
-| **Contact** | The contact form section at the bottom |
+| **Welcome (Opening Section)** | The full-page opener with ocean background, "Come as You Are", body copy, the gold "Your presence is your present." callout, more body, and the portrait photo of Kathleen & Sophia |
+| **Section** | The reusable block for Purpose / Mission / Process. Each has an eyebrow (the three-word mantra), a heading, and body paragraphs. A `theme` dropdown switches between cream and emerald backgrounds — that's how the page alternates rhythm |
+| **Foundation (dual gold quotes)** | The "Law of Love" closing section — intro paragraphs, first gold quote, middle paragraphs, second gold quote, signoff |
+| **Contact** | The contact form section + email + social links |
+| **Tagline** | The small italic band above the footer — "A Wholistic Wellness Arts & Alchemy Healing Ministry" |
 
-Each block has its own editable fields. For example, the **Offerings** block has:
-- A section heading and intro paragraph
-- A list of **cards**, each with: number, icon (picked from a dropdown), title, description, and CTA label
-- You can add, remove, or reorder cards inside the block
+### Legacy blocks (still available but hidden)
+
+These are from the earlier version of the site. They're kept in the schema and marked `hidden: true` in home.json, so they don't render — but Kathleen can un-hide any of them from Tina if she wants to bring that section back later:
+
+| Block | What it was |
+|---|---|
+| Hero | The old centered-title hero (superseded by Welcome) |
+| About | Two-column section with photo + bio (the About page at `/about` carries this content now) |
+| Offerings | The horizontal-scroll row of 11 modality cards |
+| Wholeness | Centered "Weave Your Wholeness" quote block |
+| Earth Strip | Thin emoji band (Citrine Sun / Sapphire Ocean / …) |
+| Testimonials | 4-quote grid |
+| Creations | 3-card row for Sacred Music / Visionary Writing / Oils |
 
 ---
 
@@ -123,20 +129,30 @@ Here's what actually happens when Kathleen clicks **Save** in the Tina admin:
 
 ## Common tasks
 
-### Change a hero image
-1. Admin → **Homepage** → **Hero** block
+### Change the ocean background photo (Welcome)
+1. Admin → **Homepage** → **Welcome** block
 2. Click the **Background Image** field → Upload → pick new image → Save
 3. Wait ~90 seconds, refresh the live site
 
-### Add a new offering
-1. Admin → **Homepage** → **Offerings** block
-2. Scroll to the **Cards** list → click **+ Add Item**
-3. Fill number, icon (dropdown), title, description, CTA → Save
-4. Drag it into the right position in the list
+### Replace the portrait photo (Kathleen & Sophia)
+1. Admin → **Homepage** → **Welcome** block
+2. Click the **Portrait Image** field → Upload → pick new image → Save
+3. The About page (`/about`) uses a separate field — swap it there too via Tina if you want both updated
 
-### Remove a testimonial
-1. Admin → **Homepage** → **Testimonials** block
-2. Find the item in the list → click the ⋯ menu → **Delete** → Save
+### Change a gold-font quote
+- The first gold quote ("Your presence is your present.") lives in Admin → Homepage → **Welcome** → Gold Quote field
+- The two Foundation gold quotes ("Forget all the laws…" and "Let there be light…") live in Admin → Homepage → **Foundation** → First Gold Quote / Second Gold Quote
+
+### Edit Purpose / Mission / Process copy
+1. Admin → **Homepage**
+2. Open the right **Section** block (they appear in order under Welcome)
+3. Change the eyebrow line, heading, or any paragraph → Save
+
+### Edit the About page
+- Admin → **About** (separate collection in the sidebar once the Tina schema includes it), OR edit `content/pages/about.json` directly in GitHub
+
+### Edit Offerings & Services page
+- Same as About: Admin → **Offerings**, or edit `content/pages/offerings.json`
 
 ### Reorder the homepage sections
 1. Admin → **Homepage**

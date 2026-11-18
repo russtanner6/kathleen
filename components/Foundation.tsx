@@ -2,10 +2,10 @@ type Props = {
   anchorId?: string;
   eyebrow?: string;
   heading?: string;
-  intro?: string[];
+  introParagraphs?: string[];
   firstQuote?: string;
   firstAttribution?: string;
-  middle?: string[];
+  middleParagraphs?: string[];
   secondQuote?: string;
   secondAttribution?: string;
   signoff?: string;
@@ -15,10 +15,10 @@ export default function Foundation({
   anchorId = 'foundation',
   eyebrow,
   heading,
-  intro = [],
+  introParagraphs = [],
   firstQuote,
   firstAttribution,
-  middle = [],
+  middleParagraphs = [],
   secondQuote,
   secondAttribution,
   signoff,
@@ -30,7 +30,7 @@ export default function Foundation({
         {eyebrow && <p className="v2-eyebrow reveal">{eyebrow}</p>}
         {heading && <h2 className="v2-heading reveal reveal-delay-1">{heading}</h2>}
 
-        {intro.map((p, i) => (
+        {introParagraphs.map((p, i) => (
           <p key={`i-${i}`} className="v2-body reveal reveal-delay-2">
             {p}
           </p>
@@ -46,7 +46,7 @@ export default function Foundation({
           </blockquote>
         )}
 
-        {middle.map((p, i) => (
+        {middleParagraphs.map((p, i) => (
           <p key={`m-${i}`} className="v2-body reveal">
             {p}
           </p>
