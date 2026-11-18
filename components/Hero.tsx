@@ -18,8 +18,12 @@ export default function Hero({ logoImage, backgroundImage, title, subtitle }: Pr
           // eslint-disable-next-line @next/next/no-img-element
           <img className="hero-logo" src={logoImage} alt={title} />
         ) : null}
-        <h1 className="hero-title">{title}</h1>
-        <p className="hero-subtitle">{subtitle}</p>
+        <h1 className="hero-title">
+          <span className="hero-title-text">{title}</span>
+        </h1>
+        <p className="hero-subtitle">
+          <span className="hero-subtitle-text">{subtitle}</span>
+        </p>
       </div>
       <div className="scroll-indicator">
         <span>Scroll</span>

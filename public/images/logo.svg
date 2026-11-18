@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Love Sophia Joy heart sun">
+  <defs>
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFF4C4" stop-opacity="0.95"/>
+      <stop offset="35%" stop-color="#F5D070" stop-opacity="0.55"/>
+      <stop offset="70%" stop-color="#D4AF37" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="goldMetal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF2B8"/>
+      <stop offset="25%" stop-color="#F5D070"/>
+      <stop offset="55%" stop-color="#D4AF37"/>
+      <stop offset="78%" stop-color="#B8912B"/>
+      <stop offset="100%" stop-color="#8A6A1E"/>
+    </linearGradient>
+
+    <linearGradient id="goldRay" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#FFEFB4" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#E8C547" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0.75"/>
+    </linearGradient>
+
+    <linearGradient id="heartShine" x1="30%" y1="20%" x2="70%" y2="90%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="40%" stop-color="#FFFFFF" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sun aura behind -->
+  <circle cx="200" cy="200" r="195" fill="url(#sunGlow)"/>
+
+  <!-- Sun rays: 16 tapered rays rotating around center -->
+  <g fill="url(#goldRay)" opacity="0.92">
+    <!-- long primary rays -->
+    <g>
+      <path d="M200 12 L208 60 L192 60 Z"/>
+      <path d="M200 388 L208 340 L192 340 Z"/>
+      <path d="M12 200 L60 208 L60 192 Z"/>
+      <path d="M388 200 L340 208 L340 192 Z"/>
+    </g>
+    <!-- diagonal long rays -->
+    <g transform="rotate(45 200 200)">
+      <path d="M200 20 L208 66 L192 66 Z"/>
+      <path d="M200 380 L208 334 L192 334 Z"/>
+      <path d="M20 200 L66 208 L66 192 Z"/>
+      <path d="M380 200 L334 208 L334 192 Z"/>
+    </g>
+    <!-- short secondary rays -->
+    <g opacity="0.75">
+      <g transform="rotate(22.5 200 200)">
+        <path d="M200 40 L206 78 L194 78 Z"/>
+        <path d="M200 360 L206 322 L194 322 Z"/>
+        <path d="M40 200 L78 206 L78 194 Z"/>
+        <path d="M360 200 L322 206 L322 194 Z"/>
+      </g>
+      <g transform="rotate(67.5 200 200)">
+        <path d="M200 40 L206 78 L194 78 Z"/>
+        <path d="M200 360 L206 322 L194 322 Z"/>
+        <path d="M40 200 L78 206 L78 194 Z"/>
+        <path d="M360 200 L322 206 L322 194 Z"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Inner sun disc -->
+  <circle cx="200" cy="200" r="118" fill="#F5D070" opacity="0.28"/>
+  <circle cx="200" cy="200" r="118" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.6"/>
+
+  <!-- Heart: classic symmetric cardioid-ish outline, centered -->
+  <g transform="translate(200 215)">
+    <path d="
+      M 0 60
+      C -60 20, -98 -6, -98 -42
+      C -98 -74, -72 -94, -46 -94
+      C -22 -94, -6 -80, 0 -62
+      C 6 -80, 22 -94, 46 -94
+      C 72 -94, 98 -74, 98 -42
+      C 98 -6, 60 20, 0 60 Z"
+      fill="url(#goldMetal)" stroke="#8A6A1E" stroke-width="1.5" stroke-linejoin="round"/>
+    <!-- subtle inner highlight -->
+    <path d="
+      M 0 60
+      C -60 20, -98 -6, -98 -42
+      C -98 -74, -72 -94, -46 -94
+      C -22 -94, -6 -80, 0 -62
+      C 6 -80, 22 -94, 46 -94
+      C 72 -94, 98 -74, 98 -42
+      C 98 -6, 60 20, 0 60 Z"
+      fill="url(#heartShine)"/>
+    <!-- tiny diamond sparkle in the heart's crown -->
+    <g transform="translate(-26 -52)" opacity="0.9">
+      <polygon points="0,-8 6,0 0,8 -6,0" fill="#FFFFFF"/>
+      <polygon points="0,-4 3,0 0,4 -3,0" fill="#FFF8C8"/>
+    </g>
+  </g>
+</svg>

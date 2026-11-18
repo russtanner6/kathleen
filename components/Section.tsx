@@ -5,6 +5,8 @@ type Props = {
   heading?: string;
   paragraphs?: string[];
   trail?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
 };
 
 export default function Section({
@@ -14,6 +16,8 @@ export default function Section({
   heading,
   paragraphs = [],
   trail,
+  ctaLabel,
+  ctaHref,
 }: Props) {
   return (
     <section className={`v2-section v2-${theme}`} id={anchorId}>
@@ -26,6 +30,11 @@ export default function Section({
           </p>
         ))}
         {trail && <p className="v2-trail reveal reveal-delay-3">{trail}</p>}
+        {ctaLabel && ctaHref && (
+          <a href={ctaHref} className="v2-cta reveal reveal-delay-3">
+            {ctaLabel}
+          </a>
+        )}
       </div>
     </section>
   );

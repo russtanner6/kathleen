@@ -96,6 +96,8 @@ export default defineConfig({
                   { type: 'string', name: 'heading', label: 'Heading' },
                   { type: 'string', name: 'paragraphs', label: 'Paragraphs', list: true, ui: { component: 'textarea' } },
                   { type: 'string', name: 'trail', label: 'Closing italic line (optional)' },
+                  { type: 'string', name: 'ctaLabel', label: 'Button label (optional, e.g. "Explore Offerings")' },
+                  { type: 'string', name: 'ctaHref', label: 'Button link (optional, e.g. "/offerings")' },
                 ],
               },
               {

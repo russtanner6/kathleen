@@ -71,10 +71,6 @@ export default function Welcome({
         </div>
       </div>
 
-      <div className="scroll-indicator">
-        <span>Scroll</span>
-        <div className="scroll-line" />
-      </div>
     </section>
   );
 }

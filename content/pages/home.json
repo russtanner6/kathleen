@@ -5,10 +5,17 @@
   },
   "blocks": [
     {
-      "_template": "welcome",
+      "_template": "hero",
+      "logoImage": "/images/logo.svg",
       "backgroundImage": "/images/hero-ocean.jpg",
+      "title": "Love Sophia Joy",
+      "subtitle": "Let True Light Lead the Way to Miracles Every Day"
+    },
+    {
+      "_template": "welcome",
+      "backgroundImage": "",
       "portraitImage": "/images/kathleen-portrait.jpg",
-      "brandMark": "LOVE SOPHIA JOY",
+      "brandMark": "",
       "eyebrow": "Welcome",
       "title": "Come as You Are.",
       "openingParagraphs": [
@@ -56,6 +63,18 @@
       ]
     },
     {
+      "_template": "section",
+      "anchorId": "offerings",
+      "theme": "emerald",
+      "eyebrow": "Energy · Art · Resources",
+      "heading": "Offerings & Services",
+      "paragraphs": [
+        "Wholistic wellness arts woven for you — energy work (Reiki, Qigong, Heaven on Earth Flow, Heart Alchemy, Light of Love), creative sessions (Light Language, sacred art, visionary writing), and resources for your path home."
+      ],
+      "ctaLabel": "Explore Offerings & Services",
+      "ctaHref": "/offerings"
+    },
+    {
       "_template": "foundation",
       "anchorId": "foundation",
       "eyebrow": "The Law of Love",
@@ -72,14 +91,6 @@
       "secondQuote": "And God said, “Let there be light,” and there was light.",
       "secondAttribution": "Genesis 1:31",
       "signoff": "With wholehearted radiant lovingjoy, ~ Kathleen & Sophia"
-    },
-    {
-      "_template": "hero",
-      "hidden": true,
-      "logoImage": "",
-      "backgroundImage": "",
-      "title": "Love Sophia Joy",
-      "subtitle": "LET TRUE LIGHT LEAD THE WAY TO MIRACLES EVERY DAY"
     },
     {
       "_template": "about",
