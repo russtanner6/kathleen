@@ -16,15 +16,31 @@ Personal website for Kathleen Newrones, a wholistic wellness healing artist base
 - **Email**: `kathleen@lovesophiajoy.com` to be routed via Cloudflare Email Routing → `Kathleennewrones1111@gmail.com`. Not yet configured — awaiting zone activation.
 - **Legacy**: original single-file site preserved at `_legacy/index.html`
 
-## Current Content State (2026-04-26)
-- Hero + About + Contact + Tagline visible
-- Sections Offerings, Wholeness, Earth Strip, Testimonials, Creations **hidden** via `hidden: true` on each block (not deleted — toggle back on in Tina admin anytime)
-- Nav links Offerings/Sessions/Voices hidden via same mechanism in `site.json`
-- Section numbers cleared from all blocks; components skip rendering the `.section-number` div when empty
-- Last name "Newrones" stripped from every visible/metadata location — meta title, footer copyright, About heading, blog default author all read just "Kathleen"
-- Bottom tagline block: "A Wholistic Wellness & Healing Arts Ministry" (italic, citrine gold, all-caps, Tina-editable via the new `tagline` block template)
-- Gold accent token bumped from `#D4A017` → `#D4AF37` for a truer 24k feel
-- Contact email: `kathleen@lovesophiajoy.com`
+## Current Content State (2026-11-18)
+Full rebuild per Kathleen's 11.18 Word doc + mood-board direction.
+
+**Homepage sections (visible, in order):**
+- `welcome` — ocean-bg hero with cream parchment copy panel + portrait photo. Contains the "Your presence is your present." gold callout.
+- `section` × 3 (Purpose / Mission / Process) — alternating cream and emerald themes, each with a three-word eyebrow mantra
+- `foundation` — emerald bg with radial gold aura, intro + first gold callout ("Forget all the laws that you know…") + middle + second gold callout ("Let there be light." · Genesis 1:31) + signoff
+- `contact` — emerald bg, Formspree form, email + social
+- `tagline` — "A WHOLISTIC WELLNESS ARTS & ALCHEMY HEALING MINISTRY"
+
+**Legacy blocks (hidden but preserved):** hero, about, offerings (cards), wholeness, earthStrip, testimonials, creations. Toggle any back on via Tina.
+
+**Sub-pages:** `/offerings`, `/about`, `/heart-work`, `/gifts`, `/resources` — each has its own JSON in `content/pages/`. Heart Work and Gifts are "coming soon" placeholders per Kathleen's notes.
+
+**Palette:** 14k gold (`#D4AF37`/`#E8C547`), cream (`#FDF7EC`), dark emerald (`#0E4B3A`), peach (`#F4C9A8`), teal (`#3FA395`). Gold callouts use `background-clip: text` with a 4-stop gradient for metallic sheen.
+
+**Brand/footer:** brand = `LOVE SOPHIA JOY` (all caps, serif, gold); signature line = `LOVE KATHLEEN CITRINE` (her working author name for the book series); copyright = `© 2026 LOVE SOPHIA JOY · LOVE KATHLEEN CITRINE · All rights reserved.`
+
+**Images:** `public/images/hero-ocean.jpg` (2400w, Pictures/ landscape) and `public/images/kathleen-portrait.jpg` (1400w, cropped top-anchored to 68% of her original). Raw sources archived at `Pictures/`.
+
+**Nav:** 11 items — 5 homepage anchors (Welcome/Purpose/Mission/Process/Foundation) + 6 sub-page links (Offerings & Services / Heart Work / Gifts / Resources / About / Contact).
+
+**Vercel build:** overridden in `vercel.json` to `next build` (bypassing `tinacms build`) until the Tina Cloud index gets a manual Reindex click in the Tina dashboard. Content serves fine from the repo JSON regardless; admin UI still works from the pre-built `public/admin/` assets.
+
+**Contact email:** `kathleen@lovesophiajoy.com` on display + Formspree form (form id `meevwaza`). Cloudflare email routing is still pending from the April setup — direct replies to that address bounce until that zone is activated.
 
 ## Project Structure
 ```
