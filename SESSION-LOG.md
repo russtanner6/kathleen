@@ -389,3 +389,63 @@ Second build failed with `TinaFetchError: Unable to seed content/pages/home.json
 - /heart-work gallery (she needs more time to upload pieces)
 - /gifts signup flow ("after Thanksgiving" per her note)
 - /resources content (empty intentionally)
+
+---
+
+## 2026-11-18 (later) — Kathleen's hero feedback: restore big LOVE SOPHIA JOY
+
+### Her note (verbatim)
+> I may have said Homepage incorrectly. I still love the original Homepage you did that says very big LOVE SOPHIA JOY / Let true light lead the way to miracles every day. Just want that font color more metallic yellow gold. With the yellow gold heart sun logo you did. Just want all of it w beach background. Preferably emerald green body copy & all Californian or Georgia fonts. I want WELCOME to simply be where content begins. I thought as one scrolls past big Homepage they would then see each main layer: welcome, purpose/mission, process, offerings/services ... etc.
+
+### What shipped (commit b0619c3)
+
+**Hero back on top — full-bleed opener:**
+- Unhid the `hero` block and moved it to position 0 in `content/pages/home.json`
+- Title "Love Sophia Joy" renders in a metallic gold gradient via `background-clip: text` with 6 stops (#FFF4C4 → #F5D070 → #E8C547 → #D4AF37 → #B8912B → #8A6A1E) on `.hero-title-text` — the same technique used for the gold quote callouts but applied to the giant wordmark
+- Subtitle "Let True Light Lead the Way to Miracles Every Day" switched from white Inter all-caps to italic Cormorant Garamond with the same metallic gold gradient on `.hero-subtitle-text` — matches her "metallic yellow gold" direction and feels like one piece with the title
+- Heavy black veil removed from the ocean hero bg — now ~0.28 top / 0.58 bottom so the beach, wave, and figure read through clearly (she asked for "all of it w beach background")
+- Hero wrapped in beach photo from `/public/images/hero-ocean.jpg`; fixed background on desktop, scroll attachment on mobile
+
+**Heart-sun logo:**
+- Original external asset at `russtanner.xyz/logo.png` is dead (404). Built a new SVG at `/public/images/logo.svg` — 14k gold heart with gradient fill, 16 radiating sun rays, soft gold aura, small diamond sparkle in the heart's crown
+- Scales cleanly on all screens; drop-shadow gives it a warm glow against the ocean
+
+**Running order on homepage:**
+1. Hero (big LOVE SOPHIA JOY + mantra + logo + beach)
+2. Welcome (parchment panel on cream, portrait beside)
+3. Purpose (cream)
+4. Mission (emerald)
+5. Process (cream)
+6. **Offerings & Services** (emerald, new — teaser copy + gold CTA button linking to `/offerings`)
+7. Foundation (emerald with gold aura, dual gold quotes)
+8. Contact
+9. Tagline
+
+**New section: Offerings & Services teaser**
+- Extended `components/Section.tsx` to accept optional `ctaLabel` + `ctaHref`
+- Added matching fields to `tina/config.ts` section template
+- Added `.v2-cta` button style — metallic gold gradient with emerald-ink type, lift-on-hover
+- Teaser copy: "Wholistic wellness arts woven for you — energy work (Reiki, Qigong, Heaven on Earth Flow, Heart Alchemy, Light of Love), creative sessions (Light Language, sacred art, visionary writing), and resources for your path home."
+
+**Typography per her request:**
+- Body font family: `Georgia, 'Cormorant Garamond', 'Times New Roman', serif` across `body`, `.welcome-body`, `.v2-body`, `.v2-trail`, hero title/subtitle — honoring "all Californian or Georgia fonts"
+- Headings still Cormorant Garamond (Garamond IS the Georgia family's old-style cousin)
+- Body copy on cream sections (`.v2-cream .v2-body`, `.welcome-body`) now `color: var(--emerald-ink)` (#1B5E20) — her "emerald green body copy"
+- Body copy on emerald sections stays cream (`--text-light`) for contrast
+
+**Welcome tweaks (no longer the opening scene):**
+- Backgroundimage dropped from home.json (was previously the ocean — hero owns that now)
+- `.welcome-bg` fallback color = `--cream`; `.welcome-veil` now a soft peach/cream sunrise wash instead of dark emerald tint
+- Parchment copy panel lightened (0.65 → 0.5 opacity) and shadow softened — on cream bg it wants to breathe, not sit atop an image
+- Dropped the duplicate scroll indicator (hero has its own at the bottom)
+- Dropped `brandMark` from the welcome block in home.json (hero carries the big wordmark now, no need to repeat it)
+
+### Verification
+- Deployed as `dpl_9jEJs2oXHZGV1R1Fq6P8TPei9gW8` → READY, aliased to `kathleen-lac.vercel.app`
+- Live browser check: desktop hero is gorgeous (big gold wordmark + italic gold mantra + heart-sun centered over beach); mobile hero renders equally well (vertical ocean splash composition, stacked wordmark "LOVE / SOPHIA JOY", mantra below); Purpose/Mission/Process sections read in emerald on cream with italic Garamond headings; Offerings & Services teaser renders with the new gold CTA button; Foundation dual gold quotes intact
+- No code changes to Foundation / Contact / Tagline / sub-pages — all still rendering correctly
+
+### For next time
+- Tina Cloud reindex still pending (unchanged — bypassed via vercel.json)
+- Cloudflare zone activation still pending (unchanged)
+- Logo now lives in-repo as SVG; no more external dependency

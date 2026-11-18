@@ -20,8 +20,10 @@ Personal website for Kathleen Newrones, a wholistic wellness healing artist base
 Full rebuild per Kathleen's 11.18 Word doc + mood-board direction.
 
 **Homepage sections (visible, in order):**
-- `welcome` — ocean-bg hero with cream parchment copy panel + portrait photo. Contains the "Your presence is your present." gold callout.
-- `section` × 3 (Purpose / Mission / Process) — alternating cream and emerald themes, each with a three-word eyebrow mantra
+- `hero` — big full-bleed opener: beach/ocean bg (`/images/hero-ocean.jpg`), heart-sun SVG logo (`/images/logo.svg`), huge metallic-gold "LOVE SOPHIA JOY" Cormorant Garamond wordmark, gold italic mantra "Let True Light Lead the Way to Miracles Every Day"
+- `welcome` — now on cream bg (no image), parchment copy panel + portrait photo. Contains the "Your presence is your present." gold callout.
+- `section` × 3 (Purpose / Mission / Process) — alternating cream and emerald themes, each with a three-word eyebrow mantra. Body copy is emerald-ink (#1B5E20) on cream sections per Kathleen's "emerald green body copy" request.
+- `section` (Offerings & Services) — emerald bg, teaser copy + gold CTA button `Explore Offerings & Services` → `/offerings`
 - `foundation` — emerald bg with radial gold aura, intro + first gold callout ("Forget all the laws that you know…") + middle + second gold callout ("Let there be light." · Genesis 1:31) + signoff
 - `contact` — emerald bg, Formspree form, email + social
 - `tagline` — "A WHOLISTIC WELLNESS ARTS & ALCHEMY HEALING MINISTRY"
@@ -30,11 +32,13 @@ Full rebuild per Kathleen's 11.18 Word doc + mood-board direction.
 
 **Sub-pages:** `/offerings`, `/about`, `/heart-work`, `/gifts`, `/resources` — each has its own JSON in `content/pages/`. Heart Work and Gifts are "coming soon" placeholders per Kathleen's notes.
 
-**Palette:** 14k gold (`#D4AF37`/`#E8C547`), cream (`#FDF7EC`), dark emerald (`#0E4B3A`), peach (`#F4C9A8`), teal (`#3FA395`). Gold callouts use `background-clip: text` with a 4-stop gradient for metallic sheen.
+**Palette:** 14k gold (`#D4AF37`/`#E8C547`), cream (`#FDF7EC`), dark emerald (`#0E4B3A`), emerald-ink body copy (`#1B5E20`), peach (`#F4C9A8`), teal (`#3FA395`). Gold callouts (and the hero wordmark + mantra) use `background-clip: text` with a 4–6-stop gradient for metallic sheen.
+
+**Typography:** Headings in Cormorant Garamond (Garamond-family old-style serif). Body copy and buttons in Georgia (fallback: Cormorant Garamond, Times) — per Kathleen's "all Californian or Georgia fonts" direction.
 
 **Brand/footer:** brand = `LOVE SOPHIA JOY` (all caps, serif, gold); signature line = `LOVE KATHLEEN CITRINE` (her working author name for the book series); copyright = `© 2026 LOVE SOPHIA JOY · LOVE KATHLEEN CITRINE · All rights reserved.`
 
-**Images:** `public/images/hero-ocean.jpg` (2400w, Pictures/ landscape) and `public/images/kathleen-portrait.jpg` (1400w, cropped top-anchored to 68% of her original). Raw sources archived at `Pictures/`.
+**Images:** `public/images/hero-ocean.jpg` (2400w, Pictures/ landscape — used as big hero bg), `public/images/kathleen-portrait.jpg` (1400w, cropped top-anchored to 68% of her original — floats beside Welcome copy), `public/images/logo.svg` (heart-sun mark: gold-gradient heart with 16 sun rays and a diamond sparkle; replaces the dead `russtanner.xyz/logo.png`). Raw sources archived at `Pictures/`.
 
 **Nav:** 11 items — 5 homepage anchors (Welcome/Purpose/Mission/Process/Foundation) + 6 sub-page links (Offerings & Services / Heart Work / Gifts / Resources / About / Contact).
 
