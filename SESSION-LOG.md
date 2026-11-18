@@ -449,3 +449,44 @@ Second build failed with `TinaFetchError: Unable to seed content/pages/home.json
 - Tina Cloud reindex still pending (unchanged — bypassed via vercel.json)
 - Cloudflare zone activation still pending (unchanged)
 - Logo now lives in-repo as SVG; no more external dependency
+
+## 2026-11-18 (later still) — Aqua-ombre repaint + Welcome realignment
+
+### Kathleen's feedback (verbatim)
+> "I can see on desktop site you were doing a rose peach off white ombre on the lighter pages. I prefer the lighter pages v. The emerald green background pages. I do love the emerald green font body & headline copy thruout. Perhaps instead of the emerald green background pages make them also a very soft ombre in the beach pallete theme and these can be a light aquamarine ombre like you have at the beginning the rose peach off white ombre. I want this whole site to evoke calm peaceful power like Mother Ocean Laguna. Soft yet strong and a very powerful vitalizing presence which homepage is capturing! I'd love to come up w an alternative way to lay this page w copy & photo... to get it more in alignment w subsequent pages. I love all the ways you used gold writing/scripts. That is the only exception to the all emerald green fonts."
+
+### What shipped (commit `d67238d`)
+Every section that used the dark emerald background is now a **soft aquamarine ombre** matching the rose-peach ombre rhythm. Emerald-ink body copy is preserved (her favorite). All gold accents — the metallic hero wordmark, gold-gradient callouts, foundation's radiant aura, the offerings CTA button — kept as-is per her exception for "gold writing/scripts".
+
+**Palette additions (`app/globals.css`):**
+- `--aqua-pale: #ECF7F2` → `--aqua-soft: #D4EBE2` → `--aqua-mid: #B2DBCF` → `--aqua-deep: #8CC7B9`
+- `--gold-deep: #B8912B` (for callouts on light backgrounds)
+
+**Sections repainted from emerald → aqua ombre:**
+- `.v2-emerald` — the generic emerald theme now renders light aquamarine ombre with a subtle teal radial wash at top. Heading → `--emerald-deep`, body → `--emerald-ink`, eyebrow → `--teal`.
+- `.v2-foundation` — kept the radiant gold aura (now stronger so it reads as "sunrise" over aqua instead of "glow in dark"). Eyebrow → `--gold-deep`, heading → `--emerald-deep`. `.gold-quote-bright` deepened (lighter-to-darker gold) so the Foundation quotes still punch on the aqua bg.
+- `.contact-section` — aqua ombre with white-translucent form fields, emerald-ink input text, emerald bordered "SEND WITH LOVE" button that inverts on hover.
+- `.page-tagline` — aqua wash with emerald-deep italic uppercase type (was gold-on-emerald).
+- `.v2-signoff` — gold-deep instead of gold-warm so the Foundation signoff reads on aqua.
+- Footer left emerald-deep for closure (she didn't ask it to change; it grounds the bottom of the page).
+
+**Welcome section realigned (`components/Welcome.tsx` + `.welcome-*` CSS):**
+- Dropped the 2-column grid with the parchment-paneled copy sidebar + large rectangular portrait. That layout looked heavy against the airy Purpose/Mission/Process sections below it.
+- New stack: eyebrow → title → gold line → **circular gold-framed portrait cameo** (clamped 200–280px) → centered body copy → gold quote → more centered body copy.
+- `.welcome-copy` is now transparent (no parchment panel, no border, no shadow); body copy sits directly on the peach-cream ombre and reads centered.
+- `.welcome-inner` max-width tightened from 1200px to 820px to match `.v2-inner` (the Purpose/Mission/Process column).
+- Portrait is circular with `object-fit: cover; object-position: center 28%` so Kathleen's face isn't cropped.
+
+### Verification
+- Commit `d67238d` pushed; Vercel rebuilt within ~15s. Live CSS bundle (`/_next/static/css/413cd6adf6a2b4b1.css`) contains the `--aqua-*` tokens.
+- Live screenshot check at `kathleen-lac.vercel.app/?v=aqua2`:
+  - Welcome: circular portrait cameo centered under "Come as You Are.", body copy flows centered in Georgia emerald-ink
+  - Mission (aqua): "INSPIRE · UPLIFT · INPOWER · ALIGN · SHINE" eyebrow in teal, "Mission" heading in emerald-deep italic Garamond, body in emerald-ink
+  - Offerings (aqua): gold "EXPLORE OFFERINGS & SERVICES" CTA button still pops against the aqua
+  - Foundation (aqua): radiant gold sunrise aura preserved over "THE LAW OF LOVE / Foundation"; deepened gold-gradient quotes read clearly
+  - Contact (aqua): white-translucent form fields with emerald borders, "SEND WITH LOVE" button inverts to emerald on hover
+
+### Still open
+- Original digital dog photos (Sophia on Laguna beach × 2) coming from Kathleen — she's pulling them from IG originals. Once received: regrade to match the hero tone + wire as hero cross-fade carousel ("double rainbow" homepage she asked for).
+- Tina Cloud reindex still pending (unchanged — bypassed via `vercel.json`).
+- Cloudflare zone activation still pending.

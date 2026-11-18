@@ -20,19 +20,21 @@ Personal website for Kathleen Newrones, a wholistic wellness healing artist base
 Full rebuild per Kathleen's 11.18 Word doc + mood-board direction.
 
 **Homepage sections (visible, in order):**
-- `hero` — big full-bleed opener: beach/ocean bg (`/images/hero-ocean.jpg`), heart-sun SVG logo (`/images/logo.svg`), huge metallic-gold "LOVE SOPHIA JOY" Cormorant Garamond wordmark, gold italic mantra "Let True Light Lead the Way to Miracles Every Day"
-- `welcome` — now on cream bg (no image), parchment copy panel + portrait photo. Contains the "Your presence is your present." gold callout.
-- `section` × 3 (Purpose / Mission / Process) — alternating cream and emerald themes, each with a three-word eyebrow mantra. Body copy is emerald-ink (#1B5E20) on cream sections per Kathleen's "emerald green body copy" request.
-- `section` (Offerings & Services) — emerald bg, teaser copy + gold CTA button `Explore Offerings & Services` → `/offerings`
-- `foundation` — emerald bg with radial gold aura, intro + first gold callout ("Forget all the laws that you know…") + middle + second gold callout ("Let there be light." · Genesis 1:31) + signoff
-- `contact` — emerald bg, Formspree form, email + social
-- `tagline` — "A WHOLISTIC WELLNESS ARTS & ALCHEMY HEALING MINISTRY"
+- `hero` — big full-bleed opener: beach/ocean bg (`/images/hero-ocean.jpg`), metallic-gold "LOVE SOPHIA JOY" Cormorant Garamond wordmark, gold italic mantra "Let True Light Lead the Way to Miracles Every Day". (Heart-sun SVG preserved at `/images/logo.svg` but currently not shown; Kathleen plans to place it under the tagline later.)
+- `welcome` — cream/peach ombre bg, single-column centered stack: eyebrow → title "Come as You Are." → gold line → **circular gold-framed portrait cameo** of Kathleen + Sophia → centered body copy in Georgia emerald-ink → gold callout "Your presence is your present." → more centered body copy. Lightweight, aligned with Purpose/Mission/Process column width.
+- `section` × 3 (Purpose / Mission / Process) — alternating cream and aqua ombre themes, each with a three-word eyebrow mantra. Body copy is emerald-ink (#1B5E20) on both themes. Emerald eyebrow on cream, teal eyebrow on aqua.
+- `section` (Offerings & Services) — aqua ombre bg, teaser copy + metallic gold CTA button `Explore Offerings & Services` → `/offerings`
+- `foundation` — aqua ombre bg with radiant gold sunrise aura, intro + first gold callout ("Forget all the laws that you know…") + middle + second gold callout ("Let there be light." · Genesis 1:31) + gold-deep italic signoff. Gold quote gradient is deepened so it reads strong on the light aqua.
+- `contact` — aqua ombre bg, Formspree form with white-translucent fields + emerald bordered "SEND WITH LOVE" button, email + social links
+- `tagline` — aqua wash with emerald-deep italic uppercase "A WHOLISTIC WELLNESS ARTS & ALCHEMY HEALING MINISTRY"
 
 **Legacy blocks (hidden but preserved):** hero, about, offerings (cards), wholeness, earthStrip, testimonials, creations. Toggle any back on via Tina.
 
 **Sub-pages:** `/offerings`, `/about`, `/heart-work`, `/gifts`, `/resources` — each has its own JSON in `content/pages/`. Heart Work and Gifts are "coming soon" placeholders per Kathleen's notes.
 
-**Palette:** 14k gold (`#D4AF37`/`#E8C547`), cream (`#FDF7EC`), dark emerald (`#0E4B3A`), emerald-ink body copy (`#1B5E20`), peach (`#F4C9A8`), teal (`#3FA395`). Gold callouts (and the hero wordmark + mantra) use `background-clip: text` with a 4–6-stop gradient for metallic sheen.
+**Palette:** 14k gold (`#D4AF37`/`#E8C547`), deep gold for callouts on light bg (`#B8912B`, `--gold-deep`), cream (`#FDF7EC`), peach (`#F4C9A8`), aquamarine ombre (`--aqua-pale #ECF7F2` → `--aqua-soft #D4EBE2` → `--aqua-mid #B2DBCF`), emerald (`#0E4B3A`), emerald-deep headings (`#082E25`), emerald-ink body copy (`#1B5E20`), teal (`#3FA395`). Gold callouts (and the hero wordmark + mantra) use `background-clip: text` with a 4–6-stop gradient for metallic sheen.
+
+**Section backgrounds — alternating soft ombres (per Kathleen's Mother Ocean Laguna vibe):** cream sections use a peach/off-white radial-ombre, "emerald" sections use a light aquamarine ombre with a subtle teal radial wash at top. Foundation keeps a stronger gold radial aura so it reads as sunrise over the aqua. Dark emerald backgrounds are reserved for the footer (grounding) and nav scrolled chrome.
 
 **Typography:** Headings in Cormorant Garamond (Garamond-family old-style serif). Body copy and buttons in Georgia (fallback: Cormorant Garamond, Times) — per Kathleen's "all Californian or Georgia fonts" direction.
 
