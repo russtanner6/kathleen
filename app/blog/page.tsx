@@ -44,7 +44,11 @@ export default function BlogIndexPage() {
           </div>
         </div>
       </main>
-      <Footer brand={settings.brand} copyright={settings.copyright} />
+      <Footer
+        brand={settings.brand}
+        copyright={settings.copyright}
+        signature={settings.signature}
+      />
     </>
   );
 }

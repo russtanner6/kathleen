@@ -1,11 +1,81 @@
 {
   "meta": {
-    "title": "Love Sophia Joy | Kathleen",
-    "description": "A Wholistic Wellness & Healing Arts Ministry with Kathleen — sound healing, shamanic work, Human Design, Reiki, and sacred creations from Laguna Beach."
+    "title": "LOVE SOPHIA JOY | A Wholistic Wellness Arts & Alchemy Healing Ministry",
+    "description": "Come as you are. LOVE SOPHIA JOY is a wholistic wellness, energy work and alchemy healing ministry with Kathleen Citrine from Laguna Beach — Heaven on Earth Energy Embodiment Flow, Heart Alchemy, and Light of Love transmissions."
   },
   "blocks": [
     {
+      "_template": "welcome",
+      "backgroundImage": "/images/hero-ocean.jpg",
+      "portraitImage": "/images/kathleen-portrait.jpg",
+      "brandMark": "LOVE SOPHIA JOY",
+      "eyebrow": "Welcome",
+      "title": "Come as You Are.",
+      "openingParagraphs": [
+        "We welcome you with open arms to LOVE SOPHIA JOY, a Wholistic Wellness Arts & Alchemy Healing Ministry. We are so very glad that you are here. Right now, we are sending you our love and golden good cheer. Can you feel this warm divine grace inside you, all around you so near? We can already see you smiling Divine Soul, you are so dear.",
+        "Several years ago, Christ Yeshua said to me:"
+      ],
+      "goldQuote": "Your presence is your present.",
+      "closingParagraphs": [
+        "I am, you are, we are all enough now, despite anything experienced in the past. Worthy enough. Deserving enough. Good enough. Beautiful enough. Smart enough. Strong enough. Capable enough. Uniquely, magnificently enough!",
+        "We are created from the energy of divine lovingjoy, sound & light — an emanation and ray of the One God Eternal Source — made manifest into consciousness and form. YOUR JOY is your gift, your strength, your power and your birthright. It is sacred; you are sacred. It is blessed; you are blessed. It is needed and valued; you are needed and valued. And you are allowed to be free and true, most wonderful you."
+      ]
+    },
+    {
+      "_template": "section",
+      "anchorId": "purpose",
+      "theme": "cream",
+      "eyebrow": "Miracles · Synchronicity · Liberation",
+      "heading": "Purpose",
+      "paragraphs": [
+        "Connected to Eternal God Source and rooted in the pure heart center of Mother Earth, Kathleen & Sophia are on a quest to share our radiant wholehearted lovingjoy, our innate nature of miracles, soaring in synchronicity and lifting in liberation.",
+        "Through our conversations in Spirit after Sophia's transition out of her physical vessel, we are shown that there is no separation."
+      ]
+    },
+    {
+      "_template": "section",
+      "anchorId": "mission",
+      "theme": "emerald",
+      "eyebrow": "Inspire · Uplift · Inpower · Align · Shine",
+      "heading": "Mission",
+      "paragraphs": [
+        "The mission of LOVE SOPHIA JOY is to inspire, uplift and inpower wellbeing in all forms for all resonant Souls and, by virtue, our animal beloveds and all sentient Beings.",
+        "We aim to align coherence of mindbody, energy, emotions, heartsoul and spirit — to shine through weaving our wholistic wellness arts. We embrace, integrate and ignite the inner child so that Heaven right inside the heartsoul self — the Kingdom — can be realized."
+      ]
+    },
+    {
+      "_template": "section",
+      "anchorId": "process",
+      "theme": "cream",
+      "eyebrow": "Simple · Sustainable · Successful",
+      "heading": "Process",
+      "paragraphs": [
+        "We share our simple practices, tools and resources to achieve and sustain successful coherent alignment: loving, living, laughing, letting go, letting in, focusing, flowing and flourishing.",
+        "We do this organically yet organized — through the foundation of orchestrated intention, connection breath, sound, and movement. This encompasses our energy work and our artwork: Qigong, Reiki, Energy Work, Light Language, Art and Mother Earth Elements.",
+        "Through this process, we release all that we are not and remember the infinite abundance that we inherently already are. This catalyzes the revelation of freedom, health, wealth and happiness."
+      ]
+    },
+    {
+      "_template": "foundation",
+      "anchorId": "foundation",
+      "eyebrow": "The Law of Love",
+      "heading": "Foundation",
+      "intro": [
+        "The highest healing power and law is LOVE.",
+        "During a meditative rest and in a period where I was traversing, transmuting and transcending tremendous trauma, the warming voice of God Eternal Source spoke clearly to me:"
+      ],
+      "firstQuote": "Forget all the laws that you know.\nThe only law that is real is love.",
+      "middle": [
+        "In this, I was reminded of who I AM and that my point of good faith and focus is formative in my experience. Anchoring in this Truth and Trust in myself brought me closer to Home in my heartsoul and in my mindbody. It gave me the ultimate lifeline and baseline.",
+        "I remembered my abilities to alchemize energy and hold the vision of others in their divine Soul Self, cleanse my subconscious mind, turning chaos to calm, terror to triumph, negation to creation, defeat to deliverance, depression to expression, victim to victor, entrapment to emergence, chasing to choosing, obstacles to opportunities, limits to leaps, mountains to miracles — and ultimately f.e.a.r. to love."
+      ],
+      "secondQuote": "And God said, “Let there be light,” and there was light.",
+      "secondAttribution": "Genesis 1:31",
+      "signoff": "With wholehearted radiant lovingjoy, ~ Kathleen & Sophia"
+    },
+    {
       "_template": "hero",
+      "hidden": true,
       "logoImage": "",
       "backgroundImage": "",
       "title": "Love Sophia Joy",
@@ -13,15 +83,13 @@
     },
     {
       "_template": "about",
+      "hidden": true,
       "number": "",
       "label": "About",
-      "heading": "I am Kathleen",
-      "image": "",
+      "heading": "about",
+      "image": "/images/kathleen-portrait.jpg",
       "paragraphs": [
-        "Kathleen is a Wholistic Wellness Healing Artist & Uplifter, weaving a golden tapestry of various art, wellness and healing modalities, including painting, photography, poetry, writing and sounds.",
-        "One of her specialties is expressing in her art the ancient healing language of the Soul, Source and the Cosmos through her Light Language. This evokes a celestial loving joy of remembrance of the truth of who we really are, a beautiful and magnificent sacred star.",
-        "She is an Ambassador for Mother Earth with a profound connection to the Ocean, the Sun and Spirit of Laguna Beach, for which she makes her home and draws her nourishment, replenishment, inspiration and joy.",
-        "She experiences Mother Earth Laguna, and of nature and life itself, as a symphonic thanksgiving and infinite blessing of divine grace, appreciating the love in and of everyone and everything."
+        "Kathleen is a Wholistic Wellness Artist, Alchemist & Uplifter — weaving a golden tapestry of art, wellness and healing modalities including energy work, qigong, poetry, prose, painting and photography."
       ]
     },
     {
@@ -30,86 +98,8 @@
       "number": "",
       "label": "Specializations",
       "heading": "Sacred Offerings",
-      "body": "Scroll to explore the modalities I weave together for your healing journey.",
-      "cards": [
-        {
-          "number": "01",
-          "icon": "sound",
-          "title": "Sound Healing Journeys",
-          "description": "Vibrational medicine through alchemy crystal bowls, consecrated instruments, and ancient chants drawn from multiple traditions. Elementals and spirit allies often join the work.",
-          "cta": "Book Session"
-        },
-        {
-          "number": "02",
-          "icon": "flame",
-          "title": "Shamanic Healing",
-          "description": "One of the oldest forms of healing on Earth. I journey using rattles and drums to connect with spirit guides, helping you reclaim power, rediscover gifts, and heal ancestral trauma.",
-          "cta": "Book Session"
-        },
-        {
-          "number": "03",
-          "icon": "design",
-          "title": "Human Design",
-          "description": "A map of who you are at your core, weaving I-Ching, chakras, the Tree of Life, and astrology. My readings include practical tools, rituals, and exercises to help you live your design.",
-          "cta": "Book Reading"
-        },
-        {
-          "number": "04",
-          "icon": "divination",
-          "title": "Divination",
-          "description": "Archetypal castings, Akashic records, and Tarot to identify the forces shaping your life since birth. Understand their dynamics, gifts, and shadows.",
-          "cta": "Book Session"
-        },
-        {
-          "number": "05",
-          "icon": "coaching",
-          "title": "Coaching & Mentoring",
-          "description": "You are already whole, wise, and deeply knowledgeable about your path. I hold sacred space for truth-telling, power reclamation, and guided self-discovery.",
-          "cta": "Book Session"
-        },
-        {
-          "number": "06",
-          "icon": "reiki",
-          "title": "Reiki Healing & Teaching",
-          "description": "Universal life force energy to reduce stress, quiet the mind, and restore balance. Hands-on or distance healing, plus Reiki I and II attunement training.",
-          "cta": "Book Session"
-        },
-        {
-          "number": "07",
-          "icon": "constellations",
-          "title": "Family Constellations",
-          "description": "Reveal hidden dynamics in your family system. Heal systemic disharmony within your lineage so love, belonging, and peace can be restored.",
-          "cta": "Book Session"
-        },
-        {
-          "number": "08",
-          "icon": "quantum",
-          "title": "Quantum Field Healing",
-          "description": "Connect with your multidimensional self. Clear energetic blocks, repair timelines, heal karmic trauma, and restore your field using Light Language and healing frequencies.",
-          "cta": "Book Session"
-        },
-        {
-          "number": "09",
-          "icon": "meditation",
-          "title": "Meditation & Mindfulness",
-          "description": "Practical spirituality for everyday life. Guided and silent practices, sound healing integration, and personalized tools for finding calm and clarity.",
-          "cta": "Book Session"
-        },
-        {
-          "number": "10",
-          "icon": "oils",
-          "title": "Essential Oil Blends",
-          "description": "Custom botanical blends crafted with intention to support your healing, grounding, ceremony, and energetic alignment.",
-          "cta": "Inquire"
-        },
-        {
-          "number": "11",
-          "icon": "retreats",
-          "title": "Events & Retreats",
-          "description": "Group sound healing, meditation workshops, cacao ceremonies, and fully customized retreat experiences for your community.",
-          "cta": "Inquire"
-        }
-      ]
+      "body": "",
+      "cards": []
     },
     {
       "_template": "wholeness",
@@ -117,21 +107,15 @@
       "number": "",
       "label": "Sessions",
       "heading": "Weave Your Wholeness",
-      "intro": "Being human is a gift. Consciousness with immeasurable power, integrated with a physical body carrying the stories of your lineage. In your essence, you are already whole.",
-      "quote": "The center of this universe lives in your own heart,\ndivided by dark caves, flooded by roaring rivers,\nyet always returning to its golden source.",
-      "body": "In a Wholeness session, I bring together an alchemy of practices to partner with you wherever you are on your path. No shortcuts. No bypasses. Just the authentic work of coming home to yourself.",
+      "intro": "",
+      "quote": "",
+      "body": "",
       "ctaText": "Book a Discovery Call"
     },
     {
       "_template": "earthStrip",
       "hidden": true,
-      "elements": [
-        { "icon": "☀️", "label": "Citrine Sun" },
-        { "icon": "🌊", "label": "Sapphire Ocean" },
-        { "icon": "🏖️", "label": "Gold Sand" },
-        { "icon": "🌱", "label": "Lush Life" },
-        { "icon": "🐬", "label": "Free Spirit" }
-      ]
+      "elements": []
     },
     {
       "_template": "testimonials",
@@ -139,24 +123,7 @@
       "number": "",
       "label": "Voices",
       "heading": "From Those Who've Walked This Path",
-      "items": [
-        {
-          "quote": "Working with Kathleen has been one of the most meaningful experiences of my life. She has a true gift. The connection she creates is powerful, and I feel healing in every session.",
-          "author": "Client"
-        },
-        {
-          "quote": "This has been the best healing approach I've done. Kathleen invests in knowing her clients and tailors every session to their strengths and needs. Her ability to adapt in the moment is tremendous.",
-          "author": "Client"
-        },
-        {
-          "quote": "My Human Design reading was a liberating experience. I learned to recognize what flows naturally with my design and to release what creates friction. Incredibly thorough.",
-          "author": "Client"
-        },
-        {
-          "quote": "Kathleen is a gifted healer who brings love, passion, and genuine care to every session. Being in her presence touches my heart. A true friend, teacher, and healer.",
-          "author": "Client"
-        }
-      ]
+      "items": []
     },
     {
       "_template": "creations",
@@ -164,26 +131,7 @@
       "number": "",
       "label": "Creations",
       "heading": "Music, Writing & Sacred Works",
-      "items": [
-        {
-          "visual": "v1",
-          "iconKey": "music",
-          "title": "Sacred Music",
-          "description": "Original albums of healing songs, mantras, and vocal journeys. Music as medicine."
-        },
-        {
-          "visual": "v2",
-          "iconKey": "writing",
-          "title": "Visionary Writing",
-          "description": "Poetry and prose filled with truth, longing, and the courage to begin again."
-        },
-        {
-          "visual": "v3",
-          "iconKey": "oils",
-          "title": "Essential Oil Blends",
-          "description": "Botanical alchemy crafted with intention for healing, ceremony, and daily practice."
-        }
-      ]
+      "items": []
     },
     {
       "_template": "contact",
@@ -200,7 +148,7 @@
     },
     {
       "_template": "tagline",
-      "text": "A Wholistic Wellness & Healing Arts Ministry"
+      "text": "A WHOLISTIC WELLNESS ARTS & ALCHEMY HEALING MINISTRY"
     }
   ]
 }

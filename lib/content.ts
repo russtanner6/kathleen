@@ -14,6 +14,7 @@ export type HomeData = {
 export type SiteSettings = {
   brand: string;
   copyright: string;
+  signature?: string;
   navLinks: { label: string; href: string; hidden?: boolean }[];
   navFooterLinks: { label: string; url: string }[];
 };
@@ -57,6 +58,54 @@ export function getAllBlogPosts(): BlogPostMeta[] {
     } as BlogPostMeta;
   });
   return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+export type PageMeta = { title: string; description: string };
+
+export type OfferingItem = { title: string; body: string };
+export type OfferingSection = { heading: string; items: OfferingItem[]; note?: string };
+
+export type OfferingsPage = {
+  meta: PageMeta;
+  eyebrow: string;
+  title: string;
+  sections: OfferingSection[];
+};
+
+export type AboutPage = {
+  meta: PageMeta;
+  eyebrow: string;
+  title: string;
+  portraitImage?: string;
+  paragraphs: string[];
+};
+
+export type SimplePage = {
+  meta: PageMeta;
+  eyebrow: string;
+  title: string;
+  intro?: string;
+  items?: unknown[];
+  comingSoon?: boolean;
+  comingSoonNote?: string;
+};
+
+export function getOfferingsPage(): OfferingsPage {
+  return JSON.parse(
+    fs.readFileSync(path.join(ROOT, 'content/pages/offerings.json'), 'utf8'),
+  );
+}
+
+export function getAboutPage(): AboutPage {
+  return JSON.parse(
+    fs.readFileSync(path.join(ROOT, 'content/pages/about.json'), 'utf8'),
+  );
+}
+
+export function getSimplePage(slug: 'resources' | 'gifts' | 'heart-work'): SimplePage {
+  return JSON.parse(
+    fs.readFileSync(path.join(ROOT, `content/pages/${slug}.json`), 'utf8'),
+  );
 }
 
 export async function getBlogPost(slug: string): Promise<BlogPost | null> {

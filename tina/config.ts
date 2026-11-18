@@ -65,8 +65,59 @@ export default defineConfig({
             },
             templates: [
               {
+                name: 'welcome',
+                label: 'Welcome (Opening Section)',
+                fields: [
+                  { type: 'boolean', name: 'hidden', label: 'Hidden' },
+                  { type: 'image', name: 'backgroundImage', label: 'Background Image (ocean / full-bleed)' },
+                  { type: 'image', name: 'portraitImage', label: 'Portrait Image (sits beside copy)' },
+                  { type: 'string', name: 'brandMark', label: 'Brand Mark (e.g. LOVE SOPHIA JOY)' },
+                  { type: 'string', name: 'eyebrow', label: 'Eyebrow (small label above title)' },
+                  { type: 'string', name: 'title', label: 'Title (large serif headline)' },
+                  { type: 'string', name: 'openingParagraphs', label: 'Opening Paragraphs', list: true, ui: { component: 'textarea' } },
+                  { type: 'string', name: 'goldQuote', label: 'Gold Quote (renders in metallic gold)', ui: { component: 'textarea' } },
+                  { type: 'string', name: 'goldAttribution', label: 'Gold Quote Attribution (optional)' },
+                  { type: 'string', name: 'closingParagraphs', label: 'Closing Paragraphs', list: true, ui: { component: 'textarea' } },
+                ],
+              },
+              {
+                name: 'section',
+                label: 'Section (Purpose / Mission / Process etc.)',
+                fields: [
+                  { type: 'boolean', name: 'hidden', label: 'Hidden' },
+                  { type: 'string', name: 'anchorId', label: 'Anchor ID (e.g. purpose)' },
+                  {
+                    type: 'string',
+                    name: 'theme',
+                    label: 'Theme',
+                    options: ['cream', 'emerald', 'deep'],
+                  },
+                  { type: 'string', name: 'eyebrow', label: 'Eyebrow (small label — the 3-word mantra)' },
+                  { type: 'string', name: 'heading', label: 'Heading' },
+                  { type: 'string', name: 'paragraphs', label: 'Paragraphs', list: true, ui: { component: 'textarea' } },
+                  { type: 'string', name: 'trail', label: 'Closing italic line (optional)' },
+                ],
+              },
+              {
+                name: 'foundation',
+                label: 'Foundation (dual gold quotes)',
+                fields: [
+                  { type: 'boolean', name: 'hidden', label: 'Hidden' },
+                  { type: 'string', name: 'anchorId', label: 'Anchor ID' },
+                  { type: 'string', name: 'eyebrow', label: 'Eyebrow' },
+                  { type: 'string', name: 'heading', label: 'Heading' },
+                  { type: 'string', name: 'intro', label: 'Intro Paragraphs', list: true, ui: { component: 'textarea' } },
+                  { type: 'string', name: 'firstQuote', label: 'First Gold Quote', ui: { component: 'textarea' } },
+                  { type: 'string', name: 'firstAttribution', label: 'First Attribution' },
+                  { type: 'string', name: 'middle', label: 'Middle Paragraphs', list: true, ui: { component: 'textarea' } },
+                  { type: 'string', name: 'secondQuote', label: 'Second Gold Quote', ui: { component: 'textarea' } },
+                  { type: 'string', name: 'secondAttribution', label: 'Second Attribution' },
+                  { type: 'string', name: 'signoff', label: 'Signoff (italic)' },
+                ],
+              },
+              {
                 name: 'hero',
-                label: 'Hero',
+                label: 'Hero (legacy)',
                 fields: [
                   { type: 'boolean', name: 'hidden', label: 'Hidden' },
                   { type: 'image', name: 'logoImage', label: 'Logo' },
@@ -240,6 +291,7 @@ export default defineConfig({
         ui: { allowedActions: { create: false, delete: false } },
         fields: [
           { type: 'string', name: 'brand', label: 'Brand Name' },
+          { type: 'string', name: 'signature', label: 'Signature (e.g. LOVE KATHLEEN CITRINE)' },
           { type: 'string', name: 'copyright', label: 'Copyright' },
           {
             type: 'object',

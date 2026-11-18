@@ -1,0 +1,50 @@
+{
+  "meta": {
+    "title": "Offerings & Services | LOVE SOPHIA JOY",
+    "description": "Wholistic wellness, energy work, alchemy healing, art commissions and more with Kathleen Citrine."
+  },
+  "eyebrow": "Offerings & Services",
+  "title": "Wholistic Wellness, Energy Work & Alchemy Healing",
+  "sections": [
+    {
+      "heading": "Sessions & Programs",
+      "items": [
+        {
+          "title": "HEAVEN ON EARTH ENERGY EMBODIMENT FLOW™",
+          "body": "Foundational qigong, breath, sound and movement infusing a customized weaving of Nature / Mother Earth Elements & Energy Work."
+        },
+        {
+          "title": "HEART ALCHEMY™",
+          "body": "Inner child liberation of your heart through art: fun · freedom · flow."
+        },
+        {
+          "title": "LIGHT OF LOVE™",
+          "body": "Customized Light Language audio and/or art transmission."
+        },
+        {
+          "title": "Private 1:1 Clients",
+          "body": "Accepting private clients for customized wholistic wellness, integrative energy work sessions and specialized programs."
+        },
+        {
+          "title": "Group Sessions",
+          "body": "Group sessions available for families, firefighters, emergency workers, sheriff, police, lifeguards, parents of special-needs / autistic children, all children, teenagers, work groups & teams, medical / health professionals and more."
+        }
+      ],
+      "note": "Please contact for a complimentary consultation and scheduling."
+    },
+    {
+      "heading": "Art, Poetry & Prose",
+      "items": [
+        {
+          "title": "Custom Art Commissions",
+          "body": "Original pieces for homes, offices, gifts and more."
+        },
+        {
+          "title": "Custom Poetry & Prose",
+          "body": "Original written work for homes, offices, gifts and more."
+        }
+      ],
+      "note": "Please contact to submit orders and inquiries."
+    }
+  ]
+}

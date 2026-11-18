@@ -46,7 +46,11 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           />
         </div>
       </main>
-      <Footer brand={settings.brand} copyright={settings.copyright} />
+      <Footer
+        brand={settings.brand}
+        copyright={settings.copyright}
+        signature={settings.signature}
+      />
     </>
   );
 }

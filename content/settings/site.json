@@ -1,13 +1,19 @@
 {
-  "brand": "Love Sophia Joy",
-  "copyright": "© 2026 Love Sophia Joy • Kathleen. All rights reserved.",
+  "brand": "LOVE SOPHIA JOY",
+  "copyright": "© 2026 LOVE SOPHIA JOY · LOVE KATHLEEN CITRINE · All rights reserved.",
+  "signature": "LOVE KATHLEEN CITRINE",
   "navLinks": [
-    { "label": "About", "href": "#about" },
-    { "label": "Offerings", "href": "#offerings", "hidden": true },
-    { "label": "Sessions", "href": "#wholeness", "hidden": true },
-    { "label": "Voices", "href": "#voices", "hidden": true },
-    { "label": "Connect", "href": "#connect" },
-    { "label": "Blog", "href": "/blog" }
+    { "label": "Welcome", "href": "/#welcome" },
+    { "label": "Purpose", "href": "/#purpose" },
+    { "label": "Mission", "href": "/#mission" },
+    { "label": "Process", "href": "/#process" },
+    { "label": "Foundation", "href": "/#foundation" },
+    { "label": "Offerings & Services", "href": "/offerings" },
+    { "label": "Heart Work", "href": "/heart-work" },
+    { "label": "Gifts", "href": "/gifts" },
+    { "label": "Resources", "href": "/resources" },
+    { "label": "About", "href": "/about" },
+    { "label": "Contact", "href": "/#connect" }
   ],
   "navFooterLinks": [
     { "label": "YouTube", "url": "https://www.youtube.com/@lovesophiajoy777" },

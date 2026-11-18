@@ -12,7 +12,11 @@ export default function HomePage() {
     <>
       <Nav settings={settings} />
       <BlockRenderer blocks={home.blocks} />
-      <Footer brand={settings.brand} copyright={settings.copyright} />
+      <Footer
+        brand={settings.brand}
+        copyright={settings.copyright}
+        signature={settings.signature}
+      />
       <ScrollEffects />
     </>
   );

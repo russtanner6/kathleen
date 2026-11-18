@@ -7,11 +7,10 @@ import Testimonials from './Testimonials';
 import Creations from './Creations';
 import Contact from './Contact';
 import Tagline from './Tagline';
+import Welcome from './Welcome';
+import Section from './Section';
+import Foundation from './Foundation';
 
-/**
- * Maps a block _template string to the component that renders it.
- * Kathleen can reorder blocks in home.json; this renders them in order.
- */
 export default function BlockRenderer({ blocks }: { blocks: any[] }) {
   return (
     <>
@@ -19,6 +18,12 @@ export default function BlockRenderer({ blocks }: { blocks: any[] }) {
         if (block?.hidden) return null;
         const key = `${block._template}-${i}`;
         switch (block._template) {
+          case 'welcome':
+            return <Welcome key={key} {...block} />;
+          case 'section':
+            return <Section key={key} {...block} />;
+          case 'foundation':
+            return <Foundation key={key} {...block} />;
           case 'hero':
             return <Hero key={key} {...block} />;
           case 'about':
