@@ -490,3 +490,47 @@ Every section that used the dark emerald background is now a **soft aquamarine o
 - Original digital dog photos (Sophia on Laguna beach × 2) coming from Kathleen — she's pulling them from IG originals. Once received: regrade to match the hero tone + wire as hero cross-fade carousel ("double rainbow" homepage she asked for).
 - Tina Cloud reindex still pending (unchanged — bypassed via `vercel.json`).
 - Cloudflare zone activation still pending.
+
+## 2026-11-18 (evening) — Footer type match + emerald-alt comparison preview + cloud triage routine
+
+### Footer typography
+Kathleen asked for "LOVE KATHLEEN CITRINE" to match "LOVE SOPHIA JOY" font. Swapped `.footer-signature` from Inter sans to Cormorant Garamond serif, same weight/tracking, kept gold-warm so the signature reads as a quieter partner. Commit `6dd870f`.
+
+### Emerald-alt side-by-side preview
+Kathleen wanted to feel both the aqua (loved) and the emerald (previous) palettes side by side before fully committing. Spun up branch `emerald-alt` from main with a surgical revert — restored the original dark emerald backgrounds on Mission, Offerings, Foundation, Contact, tagline, while KEEPING the new Welcome layout (circular portrait cameo + centered single-column copy). Commit on branch: `ab25f28`. Vercel preview URL at `kathleen-git-emerald-alt-rmtapps.vercel.app` (Deployment Protection is on, so a 24-hour Vercel share token was generated and sent to her in the email).
+
+### Email to Kathleen (via Gmail send_message)
+Sent her a single thread (threadId `1a1f0fcf3b7937fa`) with: live aqua URL, emerald-alt share URL, what changed this round, and 7 inline screenshots (Welcome new, Mission aqua + emerald, Foundation aqua + emerald, Offerings aqua, Footer matched). Her reply: effusive love, no change requests, says she's hunting for the Sophia-on-beach digital originals and will send ASAP. Russ sent a terse acknowledgment reply from the draft.
+
+### .claude/launch.json committed + gitignore tightened
+`.claude/launch.json` (dev-server config for the browser preview tool — `npm run dev` on port 3000) committed for portability. `.gitignore` now ignores `.claude/*` by default but allow-lists `launch.json`. Commit `c784ff8`. Rest of `.claude/` (settings.local.json, scheduled_tasks.lock) stays per-machine.
+
+### Cloud routine: hourly Kathleen email triage
+Russ went offline and asked for the monitoring to run in the cloud (independent of his Mac). Created cloud routine `trig_01WotyVvQFi4zRtzPTWC1grC` ("Kathleen email triage — lovesophiajoy"):
+- Cron: `17 * * * *` UTC (hourly at :17 — cloud minimum is 1hr, not 30min)
+- Model: claude-sonnet-5-5
+- Source: this GitHub repo
+- MCP: inherits Gmail + Vercel + all his other claude.ai connectors
+- Watches ALL emails from kathleennewrones1111@gmail.com (not just one thread)
+- Uses Gmail label `claude-triaged` as watermark to avoid duplicate drafts/notifications
+- Does NOT auto-implement code changes — identifies what she's asking for, describes the proposed change, waits for Russ's approval
+- Always drafts a reply in Russ's voice (terse, no emojis, ends with "Russ", Gmail auto-signature appends)
+- Notifications via PushNotification tool (if available in CCR) or final output (surfaces in claude.ai mobile routines feed)
+- Photo attachments: downloads to `/tmp/sophia-photos/`, acknowledges only, flags push with `PHOTOS RECEIVED —`
+- Manage: https://claude.ai/code/routines/trig_01WotyVvQFi4zRtzPTWC1grC
+
+### NAS audit
+Confirmed everything on `/Volumes/NAS/NAS Projects/Kathleen` that matters is already in git/GitHub. Pictures/, reference/, all content, all source — tracked. Only loose end was `.claude/launch.json` (now committed). NAS can disappear tomorrow; `git clone` on any machine recovers everything.
+
+### Russ's voice (for future sessions / cloud routine reference)
+- Short sentences, often fragments
+- Factual descriptions with parentheticals for detail
+- No emojis, no exclamation points, no mirroring Kathleen's effusive style
+- Example: "Glad you like it. No rush on the originals — whenever you find them I'll regrade them to match the hero tone and wire the cross-fade. Russ"
+- Gmail web signature ("------------- Russ Tanner (949) 444-2393") auto-appends on send; draft bodies should end with just "Russ" on its own line
+
+### Pending
+- **Dog photo originals from Kathleen** — hero cross-fade work requires hands-on regrade; when photos arrive (push will prefix "PHOTOS RECEIVED"), start a new Claude Code session on desktop to handle
+- Tina Cloud reindex (unchanged — still bypassed via vercel.json)
+- Cloudflare zone activation (unchanged)
+- `emerald-alt` branch can be deleted after Kathleen confirms the aqua palette is the final call
