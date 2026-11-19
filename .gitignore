@@ -26,6 +26,11 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Claude Code — commit launch.json (dev server config, portable),
+# ignore the rest (per-machine local state)
+.claude/*
+!.claude/launch.json
+
 # typescript
 *.tsbuildinfo
 
