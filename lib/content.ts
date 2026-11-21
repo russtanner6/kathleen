@@ -15,6 +15,7 @@ export type SiteSettings = {
   brand: string;
   copyright: string;
   signature?: string;
+  tagline?: string;
   navLinks: { label: string; href: string; hidden?: boolean }[];
   navFooterLinks: { label: string; url: string }[];
 };

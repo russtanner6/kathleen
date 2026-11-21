@@ -45,6 +45,7 @@ export default function AboutPage() {
         brand={settings.brand}
         copyright={settings.copyright}
         signature={settings.signature}
+        tagline={settings.tagline}
       />
       <ScrollEffects />
     </>

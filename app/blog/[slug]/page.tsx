@@ -50,6 +50,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
         brand={settings.brand}
         copyright={settings.copyright}
         signature={settings.signature}
+        tagline={settings.tagline}
       />
     </>
   );

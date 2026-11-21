@@ -119,11 +119,22 @@ export default defineConfig({
               },
               {
                 name: 'hero',
-                label: 'Hero (legacy)',
+                label: 'Hero (big beach opener)',
                 fields: [
                   { type: 'boolean', name: 'hidden', label: 'Hidden' },
-                  { type: 'image', name: 'logoImage', label: 'Logo' },
-                  { type: 'image', name: 'backgroundImage', label: 'Background Image' },
+                  { type: 'image', name: 'logoImage', label: 'Logo (optional, sits above title)' },
+                  { type: 'image', name: 'backgroundImage', label: 'Background Image (fallback when no slides are set)' },
+                  {
+                    type: 'object',
+                    name: 'slides',
+                    label: 'Cross-fade slides (2+ images)',
+                    list: true,
+                    ui: { itemProps: (item: any) => ({ label: item?.src?.split('/').pop() || 'slide' }) },
+                    fields: [
+                      { type: 'image', name: 'src', label: 'Image' },
+                      { type: 'string', name: 'position', label: 'Focus (e.g. "center 60%")' },
+                    ],
+                  },
                   { type: 'string', name: 'title', label: 'Title' },
                   { type: 'string', name: 'subtitle', label: 'Subtitle / Mantra' },
                 ],
@@ -293,6 +304,7 @@ export default defineConfig({
         ui: { allowedActions: { create: false, delete: false } },
         fields: [
           { type: 'string', name: 'brand', label: 'Brand Name' },
+          { type: 'string', name: 'tagline', label: 'Tagline (italic, shown in footer)' },
           { type: 'string', name: 'signature', label: 'Signature (e.g. LOVE KATHLEEN CITRINE)' },
           { type: 'string', name: 'copyright', label: 'Copyright' },
           {

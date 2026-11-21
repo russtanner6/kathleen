@@ -1,5 +1,6 @@
 {
   "brand": "LOVE SOPHIA JOY",
+  "tagline": "Let true light lead the way to miracles every day",
   "copyright": "© 2026 LOVE SOPHIA JOY · LOVE KATHLEEN CITRINE · All rights reserved.",
   "signature": "LOVE KATHLEEN CITRINE",
   "navLinks": [
@@ -8,7 +9,7 @@
     { "label": "Mission", "href": "/#mission" },
     { "label": "Process", "href": "/#process" },
     { "label": "Foundation", "href": "/#foundation" },
-    { "label": "Offerings & Services", "href": "/offerings" },
+    { "label": "Offerings", "href": "/offerings" },
     { "label": "Heart Work", "href": "/heart-work" },
     { "label": "Gifts", "href": "/gifts" },
     { "label": "Resources", "href": "/resources" },

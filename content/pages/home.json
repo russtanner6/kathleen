@@ -8,8 +8,13 @@
       "_template": "hero",
       "logoImage": "",
       "backgroundImage": "/images/hero-ocean.jpg",
+      "slides": [
+        { "src": "/images/hero-ocean.jpg", "position": "center 35%" },
+        { "src": "/images/hero-sophia-rocks.jpg", "position": "center 62%" },
+        { "src": "/images/hero-sophia-sand.jpg", "position": "center 68%" }
+      ],
       "title": "Love Sophia Joy",
-      "subtitle": "Let True Light Lead the Way to Miracles Every Day"
+      "subtitle": "Let true light lead the way to miracles every day"
     },
     {
       "_template": "welcome",
@@ -17,7 +22,7 @@
       "portraitImage": "/images/kathleen-portrait.jpg",
       "brandMark": "",
       "eyebrow": "Welcome",
-      "title": "Come as You Are.",
+      "title": "Come As You Are",
       "openingParagraphs": [
         "We welcome you with open arms to LOVE SOPHIA JOY, a Wholistic Wellness Arts & Alchemy Healing Ministry. We are so very glad that you are here. Right now, we are sending you our love and golden good cheer. Can you feel this warm divine grace inside you, all around you so near? We can already see you smiling Divine Soul, you are so dear.",
         "Several years ago, Christ Yeshua said to me:"
@@ -32,8 +37,8 @@
       "_template": "section",
       "anchorId": "purpose",
       "theme": "cream",
-      "eyebrow": "Miracles · Synchronicity · Liberation",
-      "heading": "Purpose",
+      "eyebrow": "Purpose",
+      "heading": "Miracles · Synchronicity · Liberation",
       "paragraphs": [
         "Connected to Eternal God Source and rooted in the pure heart center of Mother Earth, Kathleen & Sophia are on a quest to share our radiant wholehearted lovingjoy, our innate nature of miracles, soaring in synchronicity and lifting in liberation.",
         "Through our conversations in Spirit after Sophia's transition out of her physical vessel, we are shown that there is no separation."
@@ -43,8 +48,8 @@
       "_template": "section",
       "anchorId": "mission",
       "theme": "emerald",
-      "eyebrow": "Inspire · Uplift · Inpower · Align · Shine",
-      "heading": "Mission",
+      "eyebrow": "Mission",
+      "heading": "Inspire · Uplift · Inpower · Align · Shine",
       "paragraphs": [
         "The mission of LOVE SOPHIA JOY is to inspire, uplift and inpower wellbeing in all forms for all resonant Souls and, by virtue, our animal beloveds and all sentient Beings.",
         "We aim to align coherence of mindbody, energy, emotions, heartsoul and spirit — to shine through weaving our wholistic wellness arts. We embrace, integrate and ignite the inner child so that Heaven right inside the heartsoul self — the Kingdom — can be realized."
@@ -54,8 +59,8 @@
       "_template": "section",
       "anchorId": "process",
       "theme": "cream",
-      "eyebrow": "Simple · Sustainable · Successful",
-      "heading": "Process",
+      "eyebrow": "Process",
+      "heading": "Simple · Sustainable · Successful",
       "paragraphs": [
         "We share our simple practices, tools and resources to achieve and sustain successful coherent alignment: loving, living, laughing, letting go, letting in, focusing, flowing and flourishing.",
         "We do this organically yet organized — through the foundation of orchestrated intention, connection breath, sound, and movement. This encompasses our energy work and our artwork: Qigong, Reiki, Energy Work, Light Language, Art and Mother Earth Elements.",
@@ -66,19 +71,19 @@
       "_template": "section",
       "anchorId": "offerings",
       "theme": "emerald",
-      "eyebrow": "Energy · Art · Resources",
-      "heading": "Offerings & Services",
+      "eyebrow": "Offerings",
+      "heading": "Wholistic Wellness: Energy Alignment & Art Alchemy",
       "paragraphs": [
         "Wholistic wellness arts woven for you — energy work (Reiki, Qigong, Heaven on Earth Flow, Heart Alchemy, Light of Love), creative sessions (Light Language, sacred art, visionary writing), and resources for your path home."
       ],
-      "ctaLabel": "Explore Offerings & Services",
+      "ctaLabel": "Explore Offerings",
       "ctaHref": "/offerings"
     },
     {
       "_template": "foundation",
       "anchorId": "foundation",
-      "eyebrow": "The Law of Love",
-      "heading": "Foundation",
+      "eyebrow": "Foundation",
+      "heading": "The Law of Love",
       "introParagraphs": [
         "The highest healing power and law is LOVE.",
         "During a meditative rest and in a period where I was traversing, transmuting and transcending tremendous trauma, the warming voice of God Eternal Source spoke clearly to me:"
@@ -90,7 +95,7 @@
       ],
       "secondQuote": "And God said, “Let there be light,” and there was light.",
       "secondAttribution": "Genesis 1:31",
-      "signoff": "With wholehearted radiant lovingjoy, ~ Kathleen & Sophia"
+      "signoff": "With wholehearted radiant lovingjoy,\n~ Kathleen & Sophia"
     },
     {
       "_template": "about",

@@ -534,3 +534,65 @@ Confirmed everything on `/Volumes/NAS/NAS Projects/Kathleen` that matters is alr
 - Tina Cloud reindex (unchanged — still bypassed via vercel.json)
 - Cloudflare zone activation (unchanged)
 - `emerald-alt` branch can be deleted after Kathleen confirms the aqua palette is the final call
+
+## 2026-11-20 (late) — Kathleen's 7-point design punch list + hero cross-fade
+
+### Her revisions (verbatim notes from Nov 20 Gmail thread)
+- Yellow-gold places (LOVE SOPHIA JOY wordmark, tag line, quotes) not bold enough on some phones/PCs — want bolder + more gold
+- Hero tagline: drop ALL CAPS, make italic Cormorant, lowercase ("Let true light lead the way to miracles every day"), flowy like the quote fonts
+- Wonders if tagline should also sit in the emerald footer banner between LOVE SOPHIA JOY & LOVE KATHLEEN CITRINE — "only if you think it makes sense"
+- "Come as You Are." → "Come As You Are" (capital A, no period)
+- Flip section architecture: small label on top (WELCOME/PURPOSE/MISSION/PROCESS/OFFERINGS/FOUNDATION) with the big italic "call" as the feature below (Miracles · Synchronicity · Liberation / Inspire · Uplift · Inpower · Align · Shine / Simple · Sustainable · Successful / Wholistic Wellness: Energy Alignment & Art Alchemy / The Law of Love) — small gold bullet between words
+- Offerings page: either Offerings or Services (not both), scannable cards
+- Signoff: separate lines, bigger: "With wholehearted radiant lovingjoy, / ~ Kathleen & Sophia"
+- Plus: originals of 2 Sophia-on-beach photos landed via Google Photos (previously blocked)
+
+### Design decisions I made (Russ asked me to just ship it)
+- **A — Tagline placement:** keep at hero, AND add a quieter italic copy to the footer banner between brand + signature. Bookends the page; stays legible on cell where it already centers nicely.
+- **B — Gold on calls:** DO NOT yellow-gold the italic calls (would steal from LOVE SOPHIA JOY + quotes — her exact worry). Instead, put a small gold-deep middle-dot bullet between the words of each mantra. Calls stay in emerald-deep. Gold stays precious.
+- **C — Offerings page:** renamed to "Offerings" alone (nav + page title + CTA). Modality items now sit in gold-bordered cream cards with a small heart-sun icon (reusing `/images/logo.svg`) — scannable without going twee with full hearts/circles.
+
+### What shipped (commit TBD)
+- `components/Hero.tsx` — client component, accepts `slides: [{src, position}]` or `backgroundImages[]`, cross-fades between slides via React state (7s interval) with a 1.8s opacity transition; respects `prefers-reduced-motion`; first slide paints immediately (no black flash). Veil moved to `.hero-stack::after` so it stays steady across image swaps.
+- `components/Section.tsx` + `components/Foundation.tsx` — heading strings split on " · " so the middle-dot renders in gold via `.v2-heading-sep`. Foundation signoff splits on `\n` into two lines with distinct styling (closing phrase in gold-deep, names in emerald-deep).
+- `components/Footer.tsx` — now takes `tagline` prop; renders italic Cormorant tagline between `.footer-brand` and `.footer-signature`. All 8 page wrappers (`app/*/page.tsx`) threaded to pass it.
+- `app/globals.css`:
+  - Deeper, heavier metallic gradient on `.hero-title-text` (6-stop, hot whites → darker bronze bottom; font-weight 400 → 600; double drop-shadow for solid-fill underlay so gradient-text doesn't render thin on PC/phone browsers)
+  - `.hero-subtitle` reworked: italic Cormorant, lowercase (no uppercase transform, letter-spacing collapsed, size bumped)
+  - `.gold-quote-text` + `.gold-quote-bright` font-weight 400 → 600, deeper gradient stops, drop-shadow
+  - `.v2-heading-sep` — small gold bullet between words; gold on cream, gold-deep on aqua/foundation
+  - `.v2-signoff` — flex column, 1.25–1.55rem, two-line split: closing phrase gold-deep italic, names emerald-deep smaller + a bit more tracking
+  - `.hero-stack` + `.hero-bg-slide` — cross-fade mechanics (1.8s ease), reduced-motion fallback, veil moved here
+  - `.footer-tagline` — italic gold-warm Cormorant
+  - `.offering-list li` rebuilt as gold-bordered cream cards with the heart-sun logo as `::before` background-image; title bumped to 1.22rem semibold
+- `content/pages/home.json`:
+  - Hero: added `slides: [hero-ocean, hero-sophia-rocks, hero-sophia-sand]` with per-slide focus positions; subtitle lowercased
+  - Welcome: `title` → "Come As You Are" (no period)
+  - Purpose/Mission/Process/Offerings sections: swapped `eyebrow` ↔ `heading` so the section label is small and the mantra is the big italic feature; Offerings CTA `Explore Offerings` + href `/offerings`
+  - Foundation: `eyebrow` "Foundation" / `heading` "The Law of Love"; signoff split with `\n`
+- `content/settings/site.json`: added top-level `tagline`; nav "Offerings & Services" → "Offerings"
+- `content/pages/offerings.json`: eyebrow "Offerings", title "Wholistic Wellness: Energy Alignment & Art Alchemy"
+- `tina/config.ts`: added `slides` list field to hero block (image + focus), added `tagline` to site settings
+- `lib/content.ts`: `SiteSettings` type now includes `tagline?`
+- `public/images/hero-sophia-rocks.jpg` (1500×2000, 317KB) + `public/images/hero-sophia-sand.jpg` (2000×1125, 488KB) — regraded via PIL from the two Google Photos originals; sophia-rocks left mostly as-is (already golden-sunset), sophia-sand pushed slightly away from magenta toward gold so it sits in the hero-ocean warm family
+- `Pictures/sophia-originals/` — 4 raw photos from Google Photos archived (2 Sophia used; `laguna-sunset-bird.jpg` + `laguna-seagull-flight.jpg` still unused, could feed a gallery later)
+
+### Verified before pushing
+- `npm run build` green (all 11 routes prerender)
+- Playwright screenshots at 1440×900 desktop and iPhone 14 Pro mobile across every section:
+  - Hero: bold gold wordmark + italic gold mantra read clearly against wave crash; cross-fade to Sophia rocks visible after ~7s
+  - Welcome: "WELCOME" eyebrow + big italic "Come As You Are" + gold line + circular portrait + centered emerald-ink body
+  - Purpose (cream): small "PURPOSE" + big italic "Miracles · Synchronicity · Liberation" with gold bullets
+  - Mission (aqua): same pattern, 5-word mantra wraps cleanly to 2 lines on mobile
+  - Process (cream): same pattern
+  - Offerings CTA (aqua): gold "EXPLORE OFFERINGS" button still pops
+  - Foundation (aqua): small "FOUNDATION" + big italic "The Law of Love" + gold-punchier dual quotes + two-line signoff
+  - Footer: brand → italic tagline → signature stack, grounded emerald, same on mobile (centered)
+  - Offerings page: "OFFERINGS" eyebrow + "Wholistic Wellness: Energy Alignment & Art Alchemy" title + gold-bordered modality cards with heart-sun icons
+- All screenshots reviewed; nothing clipped on mobile
+
+### Still open
+- Still-missing photos (per her note): "Soph running on Mountain" + "Bluebird" originals — she'll send direct next time (Google Photos route awkward)
+- Tina Cloud reindex still pending (bypassed via vercel.json)
+- Cloudflare zone activation still pending
+- `emerald-alt` branch can still be deleted whenever
