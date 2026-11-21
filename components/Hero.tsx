@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 
-type HeroSlide = { src: string; position?: string };
+type HeroSlide = { src: string; position?: string; mobilePosition?: string };
 
 type Props = {
   logoImage?: string;
@@ -56,16 +56,23 @@ export default function Hero({
   return (
     <section className="hero">
       <div className="hero-stack" aria-hidden>
-        {allSlides.map((slide, i) => (
-          <div
-            key={`${slide.src}-${i}`}
-            className={`hero-bg hero-bg-slide${i === active ? ' is-active' : ''}`}
-            style={{
-              backgroundImage: `url('${slide.src}')`,
-              backgroundPosition: slide.position || 'center 35%',
-            }}
-          />
-        ))}
+        {allSlides.map((slide, i) => {
+          const desktopPos = slide.position || 'center 35%';
+          const mobilePos = slide.mobilePosition || desktopPos;
+          const style = {
+            backgroundImage: `url('${slide.src}')`,
+            ['--hero-pos' as any]: desktopPos,
+            ['--hero-pos-mobile' as any]: mobilePos,
+            backgroundPosition: desktopPos,
+          } as CSSProperties;
+          return (
+            <div
+              key={`${slide.src}-${i}`}
+              className={`hero-bg hero-bg-slide${i === active ? ' is-active' : ''}`}
+              style={style}
+            />
+          );
+        })}
       </div>
       <div className="hero-grain" />
       <div className="hero-content" data-parallax="0.4">

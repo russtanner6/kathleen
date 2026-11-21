@@ -404,20 +404,22 @@ nav.scrolled { padding: 1rem 3rem; }
 
 .v2-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+  font-size: clamp(2rem, 4.1vw, 3.1rem);
   font-weight: 400; font-style: italic;
-  letter-spacing: 0.01em;
-  line-height: 1.15;
+  letter-spacing: -0.005em;
+  line-height: 1.12;
   margin-bottom: 2rem;
   /* Allow long mantras ("Inspire · Uplift · Inpower · Align · Shine") to wrap
      gracefully on narrow screens */
   text-wrap: balance;
 }
 
-/* Small gold bullet between words in the mantra heading */
+/* Small gold bullet between words in the mantra heading — tighter default
+   margin so the three-word calls (Simple · Sustainable · Successful etc.)
+   hold one line on desktop. */
 .v2-heading-sep {
   display: inline-block;
-  margin: 0 0.5em;
+  margin: 0 0.3em;
   font-style: normal;
   font-weight: 500;
   color: var(--gold);
@@ -432,8 +434,10 @@ nav.scrolled { padding: 1rem 3rem; }
   color: var(--gold-deep);
 }
 
-.v2-cream .v2-heading   { color: var(--emerald-deep); }
-.v2-emerald .v2-heading { color: var(--emerald-deep); }
+/* Italic section "calls" in dusty rose gold — warm without competing with
+   the LOVE SOPHIA JOY wordmark or the Foundation gold quotes */
+.v2-cream .v2-heading   { color: var(--rose-gold); }
+.v2-emerald .v2-heading { color: var(--rose-gold); }
 .v2-deep .v2-heading    { color: var(--gold); }
 
 .v2-body {
@@ -510,7 +514,7 @@ nav.scrolled { padding: 1rem 3rem; }
 }
 
 .v2-foundation .v2-eyebrow { color: var(--gold-deep); }
-.v2-foundation .v2-heading { color: var(--emerald-deep); }
+.v2-foundation .v2-heading { color: var(--rose-gold); }
 
 .v2-signoff {
   margin-top: 3.4rem;
@@ -528,8 +532,8 @@ nav.scrolled { padding: 1rem 3rem; }
 
 .v2-signoff-line-2 {
   font-size: 0.94em;
-  letter-spacing: 0.08em;
-  color: var(--emerald-deep);
+  letter-spacing: 0.06em;
+  /* inherits gold-deep from .v2-signoff per Kathleen's ask */
 }
 
 /* ============================================================
@@ -555,7 +559,7 @@ nav.scrolled { padding: 1rem 3rem; }
 
 .gold-quote-text {
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 600; font-style: italic;
+  font-weight: 500; font-style: italic;
   font-size: clamp(1.55rem, 3.4vw, 2.5rem);
   line-height: 1.35;
   letter-spacing: 0.01em;
@@ -593,7 +597,7 @@ nav.scrolled { padding: 1rem 3rem; }
 /* brighter variant — Foundation quotes.
    Deepened for the light aqua background so the gold still reads strong. */
 .gold-quote-bright .gold-quote-text {
-  font-weight: 600;
+  font-weight: 500;
   background: linear-gradient(
     180deg,
     #FFE38A 0%,
@@ -652,7 +656,12 @@ nav.scrolled { padding: 1rem 3rem; }
 }
 
 @media (max-width: 820px) {
-  .hero-bg { background-attachment: scroll; background-position: center 45%; }
+  .hero-bg { background-attachment: scroll; }
+  /* Per-slide mobile focus (set via --hero-pos-mobile on each slide so e.g.
+     the sand shot keeps Sophia visible on a portrait phone viewport) */
+  .hero-bg-slide {
+    background-position: var(--hero-pos-mobile, var(--hero-pos, center 45%)) !important;
+  }
 }
 
 /* Veil applied ONCE on the stack (not per-slide) so it doesn't fade with the
@@ -692,17 +701,15 @@ nav.scrolled { padding: 1rem 3rem; }
 .hero-title {
   font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
   font-size: clamp(2.8rem, 9vw, 7rem);
-  font-weight: 600; letter-spacing: 0.1em;
+  font-weight: 500; letter-spacing: 0.08em;
   line-height: 1.02;
   text-transform: uppercase;
   margin: 0;
   opacity: 0; animation: fadeUp 1.5s ease 0.5s forwards;
 }
 
-/* Deepened metallic gradient: whites held longer at the top, hotter mids, and
-   a visible dark anchor at the bottom so the metal punches on every screen.
-   Paired with the .hero-title-gold layer below to add a solid-fill shadow so
-   mobile/PC browsers that render gradient text light never go thin. */
+/* Dialed back toward the original slimmer silhouette per Kathleen; shadow
+   underlay stays so mobile/PC gradient-text renders solid, not thin. */
 .hero-title-text {
   position: relative;
   background: linear-gradient(180deg,
@@ -717,9 +724,9 @@ nav.scrolled { padding: 1rem 3rem; }
   color: transparent;
   -webkit-text-fill-color: transparent;
   filter:
-    drop-shadow(0 2px 2px rgba(80,55,0,0.55))
-    drop-shadow(0 4px 18px rgba(0,0,0,0.42))
-    drop-shadow(0 0 60px rgba(255,210,100,0.3));
+    drop-shadow(0 2px 2px rgba(80,55,0,0.5))
+    drop-shadow(0 3px 14px rgba(0,0,0,0.38))
+    drop-shadow(0 0 50px rgba(255,210,100,0.26));
 }
 
 /* Italic Cormorant subtitle — lowercase, flowy, matches the quote fonts */
@@ -1068,7 +1075,7 @@ footer {
   padding: 1rem 1rem 1rem 3.4rem;
   position: relative;
   line-height: 1.8;
-  color: var(--ink-soft);
+  color: var(--emerald-ink);
   background: linear-gradient(180deg, rgba(253,247,236,0.65), rgba(246,236,215,0.5));
   border: 1px solid rgba(212,175,55,0.22);
   border-radius: 6px;
@@ -1111,7 +1118,7 @@ footer {
   background: linear-gradient(180deg, rgba(244,201,168,0.3), rgba(248,222,198,0.3));
   border-left: 2px solid var(--gold);
   font-style: italic;
-  color: var(--ink-soft);
+  color: var(--emerald-ink);
   border-radius: 2px;
 }
 

@@ -10,8 +10,7 @@
       "backgroundImage": "/images/hero-ocean.jpg",
       "slides": [
         { "src": "/images/hero-ocean.jpg", "position": "center 35%" },
-        { "src": "/images/hero-sophia-rocks.jpg", "position": "center 62%" },
-        { "src": "/images/hero-sophia-sand.jpg", "position": "center 68%" }
+        { "src": "/images/hero-sophia-sand.jpg", "position": "center 62%", "mobilePosition": "22% 62%" }
       ],
       "title": "Love Sophia Joy",
       "subtitle": "Let true light lead the way to miracles every day"
@@ -72,7 +71,7 @@
       "anchorId": "offerings",
       "theme": "emerald",
       "eyebrow": "Offerings",
-      "heading": "Wholistic Wellness: Energy Alignment & Art Alchemy",
+      "heading": "Wholistic Wellness, Energy Alignment & Art Alchemy",
       "paragraphs": [
         "Wholistic wellness arts woven for you — energy work (Reiki, Qigong, Heaven on Earth Flow, Heart Alchemy, Light of Love), creative sessions (Light Language, sacred art, visionary writing), and resources for your path home."
       ],
