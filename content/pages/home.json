@@ -9,8 +9,7 @@
       "logoImage": "",
       "backgroundImage": "/images/hero-ocean.jpg",
       "slides": [
-        { "src": "/images/hero-ocean.jpg", "position": "center 35%" },
-        { "src": "/images/hero-sophia-sand.jpg", "position": "center 62%", "mobilePosition": "22% 62%" }
+        { "src": "/images/hero-ocean.jpg", "position": "center 35%" }
       ],
       "title": "Love Sophia Joy",
       "subtitle": "Let true light lead the way to miracles every day"

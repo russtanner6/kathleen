@@ -434,10 +434,10 @@ nav.scrolled { padding: 1rem 3rem; }
   color: var(--gold-deep);
 }
 
-/* Italic section "calls" in dusty rose gold — warm without competing with
-   the LOVE SOPHIA JOY wordmark or the Foundation gold quotes */
-.v2-cream .v2-heading   { color: var(--rose-gold); }
-.v2-emerald .v2-heading { color: var(--rose-gold); }
+/* Italic section "calls" in emerald — matches the Welcome section's
+   "Come As You Are" so the eye reads one language across the homepage */
+.v2-cream .v2-heading   { color: var(--emerald-deep); }
+.v2-emerald .v2-heading { color: var(--emerald-deep); }
 .v2-deep .v2-heading    { color: var(--gold); }
 
 .v2-body {
@@ -514,7 +514,7 @@ nav.scrolled { padding: 1rem 3rem; }
 }
 
 .v2-foundation .v2-eyebrow { color: var(--gold-deep); }
-.v2-foundation .v2-heading { color: var(--rose-gold); }
+.v2-foundation .v2-heading { color: var(--emerald-deep); }
 
 .v2-signoff {
   margin-top: 3.4rem;
@@ -557,28 +557,29 @@ nav.scrolled { padding: 1rem 3rem; }
   opacity: 0.35;
 }
 
+/* Slim original look — Kathleen reads the heavier/underlaid version as
+   "puffy and a little blurry" on her screens. Font-weight 400, lighter
+   gradient, no drop-shadow underlay. */
 .gold-quote-text {
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 500; font-style: italic;
-  font-size: clamp(1.55rem, 3.4vw, 2.5rem);
+  font-weight: 400; font-style: italic;
+  font-size: clamp(1.5rem, 3.2vw, 2.4rem);
   line-height: 1.35;
   letter-spacing: 0.01em;
   white-space: pre-line;
 
   background: linear-gradient(
     180deg,
-    #FFEEA8 0%,
-    #F5CC40 38%,
-    #D1A21B 72%,
-    #8A6013 100%
+    #F9E08A 0%,
+    var(--gold-warm) 35%,
+    var(--gold) 70%,
+    #B9871F 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  filter:
-    drop-shadow(0 1px 1px rgba(60,40,0,0.35))
-    drop-shadow(0 2px 8px rgba(255,220,120,0.14));
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 
   padding: 0.2rem 0;
 }
@@ -597,21 +598,19 @@ nav.scrolled { padding: 1rem 3rem; }
 /* brighter variant — Foundation quotes.
    Deepened for the light aqua background so the gold still reads strong. */
 .gold-quote-bright .gold-quote-text {
-  font-weight: 500;
+  font-weight: 400;
   background: linear-gradient(
     180deg,
-    #FFE38A 0%,
-    #F0BE2B 40%,
-    #B48219 75%,
-    #6E4A0C 100%
+    #F5D070 0%,
+    #D4AF37 40%,
+    #B8912B 75%,
+    #8A6A1E 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  filter:
-    drop-shadow(0 1px 0 rgba(255,255,255,0.4))
-    drop-shadow(0 1px 1px rgba(60,40,0,0.4));
+  filter: drop-shadow(0 1px 0 rgba(255,255,255,0.35));
 }
 
 .v2-emerald .gold-quote-mark { color: var(--gold-deep); opacity: 0.4; }
@@ -1017,7 +1016,7 @@ footer {
    ============================================================ */
 .page-wrap {
   background: var(--cream);
-  color: var(--ink);
+  color: var(--emerald-ink);
   min-height: 100vh;
   padding: 10rem 2rem 6rem;
 }
@@ -1047,10 +1046,13 @@ footer {
   background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
-.page-body { font-size: 1rem; line-height: 1.95; color: var(--ink-soft); }
+/* All sub-page body copy in emerald per Kathleen — anywhere a dark-grey
+   or black run was reading, switch to --emerald-ink. Headers keep
+   --emerald-deep for a touch more weight. */
+.page-body { font-size: 1rem; line-height: 1.95; color: var(--emerald-ink); }
 .page-body p { margin-bottom: 1.4rem; }
 .page-body strong { color: var(--emerald-deep); font-weight: 600; }
-.page-body em { color: var(--gold); font-style: normal; font-weight: 500; }
+.page-body em { color: var(--gold-deep); font-style: italic; font-weight: 500; }
 
 .page-section {
   margin-top: 3.5rem;
